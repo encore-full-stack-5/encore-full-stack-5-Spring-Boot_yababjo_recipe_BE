@@ -9,6 +9,8 @@ import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor
@@ -59,4 +61,16 @@ public class Recipe {
     @ManyToOne
     private CookingMethod cookingMethod;
 
+    //@OneToMany 재료브릿지,양념브릿지,조리순서,댓글
+    @OneToMany(mappedBy = "recipe")
+    private List<SauceRecipeBridge> sauceRecipeBridges;
+
+//    @OneToMany(mappedBy = "recipe")
+//    private List<FoodIngredients> foodIngredients;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<CookingOrder> cookingOrders;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<Comment> comments;
 }
