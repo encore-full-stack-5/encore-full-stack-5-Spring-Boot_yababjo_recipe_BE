@@ -1,9 +1,6 @@
 package com.example.recipe.global.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="USERS")
@@ -19,7 +16,7 @@ public class User {
     private String eMail;
 
     @JoinColumn(name="FOOD_RECIPE_ID")
-    @ManyToOne
+    @OneToMany(mappedBy = "recipe")
     private Recipe recipe;
 
 }
