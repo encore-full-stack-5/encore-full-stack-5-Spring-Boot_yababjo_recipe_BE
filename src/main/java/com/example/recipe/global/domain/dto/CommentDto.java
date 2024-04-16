@@ -1,4 +1,8 @@
 package com.example.recipe.global.domain.dto;
 
-public record CommentDto() {
+import java.time.LocalDateTime;
+
+public record CommentDto(
+        Long id, int rating, String content
+) {
 }
