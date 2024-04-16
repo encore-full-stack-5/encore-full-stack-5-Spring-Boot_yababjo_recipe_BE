@@ -1,7 +1,15 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
 @Entity
 @Table(name="USERS")
 public class User {
