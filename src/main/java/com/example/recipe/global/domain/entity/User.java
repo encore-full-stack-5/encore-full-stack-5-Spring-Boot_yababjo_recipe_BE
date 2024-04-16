@@ -16,7 +16,7 @@ public class User {
     private String eMail;
 
     @JoinColumn(name="FOOD_RECIPE_ID")
-    @ManyToOne
+    @OneToMany(mappedBy = "recipe")
     private Recipe recipe;
 
 }
