@@ -1,4 +1,6 @@
 package com.example.recipe.global.domain.dto;
 
-public record RecipeDto() {
+public record RecipeDto(
+
+) {
 }
