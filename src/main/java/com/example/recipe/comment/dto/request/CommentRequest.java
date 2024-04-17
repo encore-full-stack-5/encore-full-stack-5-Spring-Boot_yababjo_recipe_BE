@@ -8,14 +8,14 @@ import java.time.LocalDateTime;
 
 public record CommentRequest(
         String content,
-        int rating,
+//        int rating,
         Long userId,
         Long recipeId
 ) {
     public Comment toEntity(User user, Recipe recipe) {
         return Comment.builder()
                 .content(content)
-                .rating(rating)
+//                .rating(rating)
                 .recipe(recipe)
                 .user(user)
                 .createdAt(LocalDateTime.now())

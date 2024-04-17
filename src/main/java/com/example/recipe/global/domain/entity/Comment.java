@@ -19,8 +19,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COMMENT_ID")
     private Long id;
-    @Column(name = "COMMENT_RATING")
-    private int rating;
+//    @Column(name = "COMMENT_RATING")
+//    private int rating;
     @Column(name = "COMMENT_CONTENT")
     private String content;
     @Column(name = "COMMENT_CREATED_AT")
