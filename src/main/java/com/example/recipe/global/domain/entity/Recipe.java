@@ -19,7 +19,7 @@ public class Recipe {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOOD_RECIPE_ID", nullable = false)
-    private int id;
+    private Long id;
 
     @Column(name = "FOOD_RECIPE_FOOD_NAME", nullable = false)
     private String foodName;
@@ -28,7 +28,7 @@ public class Recipe {
     private String recipeTitle;
 
     @Column(name = "FOOD_RECIPE_COOKING_TIP")
-    private int cookingTip;
+    private String cookingTip;
 
     @Column(name = "FOOD_RECIPE_SERVING_SIZE")
     private int servingSize;
