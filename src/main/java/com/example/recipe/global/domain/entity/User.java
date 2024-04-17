@@ -27,8 +27,12 @@ public class User {
     @OneToMany(mappedBy = "recipe")
     private Recipe recipe;
 
-    @JoinColumn(name="TAG_ID" )
-    @OneToMany(mappedBy = "tag")
-    private Tag tag;
+//    @JoinColumn(name="TAG_ID" )
+//    @OneToMany(mappedBy = "tag")
+//    private Tag tag;
+
+    @JoinColumn(name="COMMENT_ID")
+    @OneToMany(mappedBy = "user")
+    private Comment comment;
 
 }
