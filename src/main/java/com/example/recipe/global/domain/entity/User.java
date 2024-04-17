@@ -19,4 +19,8 @@ public class User {
     @OneToMany(mappedBy = "recipe")
     private Recipe recipe;
 
+    @JoinColumn(name="TAG_ID" )
+    @OneToMany(mappedBy = "tag")
+    private Tag tag;
+
 }

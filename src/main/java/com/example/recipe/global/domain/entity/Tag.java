@@ -11,7 +11,14 @@ public class Tag {
     @Column(name="TAG_KEYWORD")
     private String keyword;
 
+    @JoinColumn(name="USER_ID",nullable = false)
+    @ManyToOne
+    private User user;
+
     @JoinColumn(name="FOOD_RECIPE_ID" )
     @OneToMany(mappedBy = "recipe")
     private Recipe recipe;
+
+
+
 }
