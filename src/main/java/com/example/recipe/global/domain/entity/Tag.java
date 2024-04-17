@@ -11,17 +11,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Builder
-@Table(name="TYPES")
-public class Type {
+@Table(name="TAGS")
+public class Tag {
     @Id
-    @Column(name="TYPES_ID")
+    @Column(name="TAG_ID")
     private Long id;
-    @Column(name="TYPES_TYPENAME")
-    private String typeName;
+    @Column(name="TAG_KEYWORD")
+    private String keyword;
 
     @JoinColumn(name="FOOD_RECIPE_ID" )
     @OneToMany(mappedBy = "recipe")

@@ -4,6 +4,7 @@ public record UserDto(
         Long id,
         String nickname,
         String password,
-        String eMail
+        String eMail,
+        Long id
 ) {
 }
