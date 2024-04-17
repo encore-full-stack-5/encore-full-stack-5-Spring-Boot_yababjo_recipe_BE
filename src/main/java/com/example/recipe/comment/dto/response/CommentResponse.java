@@ -13,6 +13,6 @@ public record CommentResponse(
     public static CommentResponse from(Comment comment) {
         User user = comment.getUser();
         UserDto userDto =
-                new UserDto(user.)
+                new UserDto(user.getId(),user.getNickname(), user.getEMail());
     }
 }
