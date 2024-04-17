@@ -65,8 +65,8 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe")
     private List<SauceRecipeBridge> sauceRecipeBridges;
 
-//    @OneToMany(mappedBy = "recipe")
-//    private List<FoodIngredients> foodIngredients;
+    @OneToMany(mappedBy = "recipe")
+    private List<FoodIngredients> foodIngredients;
 
     @OneToMany(mappedBy = "recipe")
     private List<CookingOrder> cookingOrders;
