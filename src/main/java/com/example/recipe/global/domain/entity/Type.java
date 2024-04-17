@@ -1,8 +1,16 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Builder
 @Table(name="TYPES")
 public class Type {
     @Id

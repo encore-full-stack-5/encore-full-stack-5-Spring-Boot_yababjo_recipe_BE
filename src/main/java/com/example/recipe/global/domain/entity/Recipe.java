@@ -61,6 +61,7 @@ public class Recipe {
     private CookingMethod cookingMethod;
 
     //@OneToMany 재료브릿지,양념브릿지,조리순서,댓글
+
     @OneToMany(mappedBy = "recipe")
     private List<SauceRecipeBridge> sauceRecipeBridges;
 
