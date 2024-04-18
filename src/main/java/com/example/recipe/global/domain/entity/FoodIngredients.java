@@ -20,4 +20,8 @@ public class FoodIngredients {
     private String type;
     @Column(name = "FOODINGREDIENTS_DES")
     private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RECIPE_ID")
+    private Recipe recipe;
 }

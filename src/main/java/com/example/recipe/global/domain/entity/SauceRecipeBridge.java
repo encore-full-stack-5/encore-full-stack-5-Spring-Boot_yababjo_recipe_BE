@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @AllArgsConstructor
@@ -17,7 +16,7 @@ public class SauceRecipeBridge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SAUCE_RECIPE_BRIDGE_ID", nullable = false)
-    private int id;
+    private Long id;
 
     @Column(name = "SAUCE_MEASUREMENT")
     private double sauceMeasurement;
