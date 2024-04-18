@@ -1,7 +1,7 @@
 package com.example.recipe.ingredient.service;
 
 import com.example.recipe.global.domain.entity.FoodIngredient;
-import com.example.recipe.ingredient.dto.IngredientRequest;
+import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
