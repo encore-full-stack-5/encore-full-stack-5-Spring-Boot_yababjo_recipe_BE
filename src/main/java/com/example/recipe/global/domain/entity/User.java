@@ -24,11 +24,14 @@ public class User {
     private String eMail;
 
     @JoinColumn(name="FOOD_RECIPE_ID")
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "user")
     private Recipe recipe;
+
+    @JoinColumn(name="COMMENT_ID")
+    @OneToMany(mappedBy = "user")
+    private Comment comment;
 
     @JoinColumn(name="TAG_ID" )
     @OneToMany(mappedBy = "tag")
     private Tag tag;
-
 }

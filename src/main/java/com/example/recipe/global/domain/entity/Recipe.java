@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.cglib.core.Local;
-import org.springframework.data.annotation.Id;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +16,6 @@ import java.util.List;
 @Getter @Builder
 @Table(name = "FOOD_RECIPE")
 public class Recipe {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOOD_RECIPE_ID", nullable = false)
     private Long id;
@@ -59,6 +58,8 @@ public class Recipe {
     @JoinColumn(name="COOKING_METHOD_ID", nullable = false)
     @ManyToOne
     private CookingMethod cookingMethod;
+
+    //@OneToMany 재료브릿지,양념브릿지,조리순서,댓글
 
     @OneToMany(mappedBy = "recipe")
     private List<SauceRecipeBridge> sauceRecipeBridges;
