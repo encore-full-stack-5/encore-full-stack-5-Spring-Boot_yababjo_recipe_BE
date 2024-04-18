@@ -1,19 +1,18 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Getter
+@Getter @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "FOODINGREDIENTS")
-public class FoodIngredients {
+public class FoodIngredient {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOODINGREDIENTS_ID")
     private Long id;
+    @Setter
     @Column(name = "FOODINGREDIENTS_NAME")
     private String name;
     @Column(name = "FOODINGREDIENTS_TYPE")
@@ -21,7 +20,18 @@ public class FoodIngredients {
     @Column(name = "FOODINGREDIENTS_DES")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RECIPE_ID")
-    private Recipe recipe;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
 }

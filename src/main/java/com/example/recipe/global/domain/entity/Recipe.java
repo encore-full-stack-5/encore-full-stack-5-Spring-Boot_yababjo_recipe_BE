@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.cglib.core.Local;
 
 
 import java.time.LocalDateTime;
@@ -68,7 +67,7 @@ public class Recipe {
     private List<SauceRecipeBridge> sauceRecipeBridges;
 
     @OneToMany(mappedBy = "recipe")
-    private List<FoodIngredients> foodIngredients;
+    private List<FoodIngredient> foodIngredients;
 
     @OneToMany(mappedBy = "recipe")
     private List<CookingOrder> cookingOrders;
