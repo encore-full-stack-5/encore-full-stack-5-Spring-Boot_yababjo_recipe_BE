@@ -12,13 +12,22 @@ public record CommentRequest(
         Long userId,
         Long recipeId
 ) {
-    public Comment toEntity(User user, Recipe recipe) {
+    public Comment toEntity() {
+//        User user = new User(userId, null, null,
+//                null, null,null,null);
+//        return Comment.builder()
+//                .content(content)
+////                .rating(rating)
+//                .recipe(new Recipe(recipeId,null,null,null,0,
+//                        0,0,null,0,0,user,null,null,null,null,null,null))
+//                .user(user)
+//                .createdAt(LocalDateTime.now())
+//                .build();
         return Comment.builder()
                 .content(content)
-//                .rating(rating)
-                .recipe(recipe)
-                .user(user)
                 .createdAt(LocalDateTime.now())
+                .user(User.builder().id(userId).build())
+                .recipe(Recipe.builder().id(recipeId).build())
                 .build();
     }
 }
