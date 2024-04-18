@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import java.util.List;
 @Builder
 @Table(name = "FOOD_SAUCE")
 public class Sauce {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SAUCE_ID", nullable = false)
