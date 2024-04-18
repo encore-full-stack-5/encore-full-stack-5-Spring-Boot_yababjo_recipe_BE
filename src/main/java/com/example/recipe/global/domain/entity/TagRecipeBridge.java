@@ -6,23 +6,23 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Builder
-@Table(name="TYPES")
-public class Type {
+@Table(name = "TAG_RECIPE_BRIDGE")
+public class TagRecipeBridge {
     @Id
-    @Column(name="TYPES_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "TAG_RECIPE_BRIDGE_ID", nullable = false)
     private Long id;
-    @Column(name="TYPES_TYPENAME")
-    private String typeName;
 
-    @JoinColumn(name="FOOD_RECIPE_ID" )
-//    @OneToMany(mappedBy = "recipe")
-//    private Recipe recipe;
+    @JoinColumn(name="FOOD_RECIPE_ID", nullable = false)
     @ManyToOne
     private Recipe recipe;
+
+    @JoinColumn(name="TAG_ID", nullable = false)
+    @ManyToOne
+    private Tag tag;
 }
