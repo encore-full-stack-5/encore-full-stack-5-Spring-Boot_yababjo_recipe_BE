@@ -6,6 +6,6 @@ import com.example.recipe.tag.dto.Request.TagRequest;
 import java.util.List;
 
 public interface TagService {
-    void insertSave(TagRequest req, Long id);
-    List<Tag> showTag();
+//    void insertSave(TagRequest req, Long id);
+//    List<Tag> showTag();
 }
