@@ -1,4 +1,7 @@
 package com.example.recipe.global.domain.repository;
 
-public interface CookingMethodRepository {
+import com.example.recipe.global.domain.entity.CookingMethod;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CookingMethodRepository extends JpaRepository<CookingMethod, Long> {
 }
