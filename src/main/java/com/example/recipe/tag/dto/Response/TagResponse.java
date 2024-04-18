@@ -9,5 +9,6 @@ public record TagResponse(
         String keyword,
         User user,
         Recipe recipe
+
 ){
 }

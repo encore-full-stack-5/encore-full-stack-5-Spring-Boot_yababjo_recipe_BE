@@ -1,4 +1,4 @@
-package com.example.recipe.ingredient.dto;
+package com.example.recipe.ingredient.dto.request;
 
 import com.example.recipe.global.domain.entity.FoodIngredient;
 
