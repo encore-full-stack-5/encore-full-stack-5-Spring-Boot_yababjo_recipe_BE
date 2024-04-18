@@ -5,7 +5,7 @@ import com.example.recipe.ingredient.dto.request.IngredientRequest;
 
 import java.util.List;
 
-public interface IngredientService {
+public interface IngredientService  {
     void  save(IngredientRequest req);
     List<FoodIngredient> findAll();
     FoodIngredient getByName(String name);

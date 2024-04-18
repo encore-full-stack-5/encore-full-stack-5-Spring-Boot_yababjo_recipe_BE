@@ -7,6 +7,13 @@ public record IngredientRequest(
 
 ) {
     public FoodIngredient toEntity(){
-
+        return FoodIngredient.builder()
+                .id(id)
+                .name(name)
+                .description(description)
+                .type(type)
+                .build();
     }
+
+
 }
