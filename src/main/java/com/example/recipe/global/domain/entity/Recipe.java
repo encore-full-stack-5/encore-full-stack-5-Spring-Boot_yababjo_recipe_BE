@@ -16,7 +16,6 @@ import java.util.List;
 @Getter @Builder
 @Table(name = "FOOD_RECIPE")
 public class Recipe {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOOD_RECIPE_ID", nullable = false)
     private Long id;
@@ -60,20 +59,13 @@ public class Recipe {
     @ManyToOne
     private CookingMethod cookingMethod;
 
-<<<<<<< HEAD
     //@OneToMany 재료브릿지,양념브릿지,조리순서,댓글
-    @OneToMany(mappedBy = "recipe")
-    private List<SauceRecipeBridge> sauceRecipeBridges;
 
-//    @OneToMany(mappedBy = "recipe")
-//    private List<FoodIngredients> foodIngredients;
-=======
     @OneToMany(mappedBy = "recipe")
     private List<SauceRecipeBridge> sauceRecipeBridges;
 
     @OneToMany(mappedBy = "recipe")
     private List<FoodIngredients> foodIngredients;
->>>>>>> 96f95108899e5490a22e47672aadf4fd7e7f00ec
 
     @OneToMany(mappedBy = "recipe")
     private List<CookingOrder> cookingOrders;

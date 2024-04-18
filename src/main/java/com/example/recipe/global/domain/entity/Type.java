@@ -11,6 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Builder
 @Table(name="TYPES")
 public class Type {
     @Id
