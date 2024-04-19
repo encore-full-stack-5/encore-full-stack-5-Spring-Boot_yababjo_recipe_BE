@@ -10,6 +10,7 @@ import com.example.recipe.global.domain.repository.CommentRepository;
 import com.example.recipe.global.domain.repository.RecipeRepository;
 import com.example.recipe.global.domain.repository.TypeRepository;
 import com.example.recipe.global.domain.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,6 +48,43 @@ class CommentServiceImplTest {
         commentService.save(req);
     }
 
+    @Test
+    void update_성공() {
+//        given
+        init();
+        save();
+        CommentRequest req = new CommentRequest(
+                "test22",
+                comment.getUser().getId(),
+                comment.getRecipe().getId()
+        );
+        Long id = comment.getId();
+//        when
+        commentService.update(req,id);
+//        then
+        Comment comment1 = commentRepository.findById(id).get();
+        assertEquals("test22", comment1.getContent());
+    }
+
+    @Test
+    void update_실패_아이디_없음(){
+        init();
+        save();
+        CommentRequest req = new CommentRequest(
+                "test22",
+                comment.getUser().getId(),
+                comment.getRecipe().getId()
+        );
+        Long id = 10000000L;
+
+
+        assertThrows(
+                EntityNotFoundException.class,
+                ()-> commentService.update(req,id)
+        );
+
+    }
+
     @BeforeEach
     void init(){
         User user = User.builder().id(1L).build();
@@ -63,6 +101,7 @@ class CommentServiceImplTest {
         recipeRepository.save(recipe);
 
         comment = Comment.builder()
+                .id(1L)
                 .user(user)
                 .content("test")
                 .recipe(recipe)
