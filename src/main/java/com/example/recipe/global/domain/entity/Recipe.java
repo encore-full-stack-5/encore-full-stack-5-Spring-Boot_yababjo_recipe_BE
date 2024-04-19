@@ -55,10 +55,12 @@ public class Recipe {
     @ManyToOne
     private Type type;
 
-    @JoinColumn(name="COOKING_METHOD_ID", nullable = false)
-    @ManyToOne
-    private CookingMethod cookingMethod;
+//    @JoinColumn(name="COOKING_METHOD_ID", nullable = false)
+//    @ManyToOne
+//    private CookingMethod cookingMethod;
 
+    @OneToMany(mappedBy = "recipe")
+    private List<CookingMethod> cookingMethods;
     //@OneToMany 재료브릿지,양념브릿지,조리순서,댓글
 
     @OneToMany(mappedBy = "recipe")
