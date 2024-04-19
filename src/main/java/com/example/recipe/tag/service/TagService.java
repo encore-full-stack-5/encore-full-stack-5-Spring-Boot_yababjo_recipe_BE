@@ -5,7 +5,6 @@ import com.example.recipe.tag.dto.Request.TagRequest;
 
 import java.util.List;
 
-public interface TagService {
-//    void insertSave(TagRequest req, Long id);
-//    List<Tag> showTag();
+public interface TagService{
+  void save(TagRequest req);
 }

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -23,15 +25,16 @@ public class User {
     @Column(name="USERS_EMAIL")
     private String eMail;
 
-    @JoinColumn(name="FOOD_RECIPE_ID")
+    @Column(name="FOOD_RECIPE_ID")
     @OneToMany(mappedBy = "user")
-    private Recipe recipe;
+    private List<Recipe> recipe;
 
-    @JoinColumn(name="COMMENT_ID")
+    @Column(name="COMMENT_ID")
     @OneToMany(mappedBy = "user")
-    private Comment comment;
+    private List<Comment> comments;
 
-    @JoinColumn(name="TAG_ID" )
-    @OneToMany(mappedBy = "tag")
-    private Tag tag;
+//    @Column(name="TAG_ID" )
+//    @OneToMany(mappedBy = "tag")
+//    private List<Tag> tag;
+
 }
