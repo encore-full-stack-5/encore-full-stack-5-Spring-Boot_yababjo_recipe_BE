@@ -3,6 +3,7 @@ package com.example.recipe.ingredient.service;
 import com.example.recipe.global.domain.entity.FoodIngredient;
 import com.example.recipe.global.domain.repository.FoodIngredientsRepository;
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
+import com.example.recipe.ingredient.dto.response.IngredientResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class IngredientServiceImpl implements IngredientService {
 
-    private final FoodIngredientsRepository ingredientsRepository;
+    private  FoodIngredientsRepository ingredientsRepository;
     @Override
     public void save(IngredientRequest req) {
         ingredientsRepository.save(req.toEntity());
@@ -23,20 +24,28 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
 
-    public List<FoodIngredient> findAll() {
+    public List<FoodIngredient> getAll() {
 
         return ingredientsRepository.findAll();
     }
 
     @Override
     @Transactional
-    public FoodIngredient getByName(String name) {
-        Optional<FoodIngredient> byName = ingredientsRepository.getByName(name);
-        if (byName.isEmpty()) {
-            throw(new IllegalArgumentException(name + " not found"));
-        }
 
-        return byName.get();
+    public FoodIngredient getById(Long id) {
+        Optional<FoodIngredient> byId = Optional.of(ingredientsRepository.getById(id));
+        FoodIngredient ingredient = byId.orElse(new FoodIngredient());
+
+        return ingredient;
+    }
+
+    @Override
+    public String getDescriptionById(Long id) {
+        Optional<FoodIngredient> byId = Optional.of(ingredientsRepository.getById(id));
+        String description = byId.orElse(new FoodIngredient()).getDescription();
+
+
+        return description;
     }
 
 
