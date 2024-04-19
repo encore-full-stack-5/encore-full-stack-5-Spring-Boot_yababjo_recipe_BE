@@ -23,6 +23,7 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
+    @Transactional
     public Comment update(CommentRequest req, Long id) {
         Comment comment = commentRepository.findById(id).orElseThrow(
                 EntityNotFoundException::new);

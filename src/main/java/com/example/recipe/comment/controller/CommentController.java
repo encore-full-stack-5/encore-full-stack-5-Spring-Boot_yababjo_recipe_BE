@@ -19,11 +19,11 @@ public class CommentController {
     public void save(@RequestBody CommentRequest req) {
         commentService.save(req);
     }
-    @GetMapping("/{recipeId}")
+    @GetMapping("/recipe/{recipeId}")
     public List<CommentResponse> getByRecipeId(@PathVariable Long recipeId) {
         return commentService.getCommentsByRecipeId(recipeId);
     }
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public List<CommentResponse> getByUserId(@PathVariable Long userId) {
         return commentService.getCommentsByUserId(userId);
     }
