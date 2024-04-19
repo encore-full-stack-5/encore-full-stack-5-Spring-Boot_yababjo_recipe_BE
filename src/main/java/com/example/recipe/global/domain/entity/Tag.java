@@ -25,10 +25,6 @@ public class Tag {
     @ManyToOne
     private User user;
 
-    @JoinColumn(name="FOOD_RECIPE_ID" )
-//    @OneToMany(mappedBy = "recipe")
-    @ManyToOne
-    private Recipe recipe;
 
     @OneToMany(mappedBy = "tag")
     private List<TagRecipeBridge> tagRecipeBridges;
