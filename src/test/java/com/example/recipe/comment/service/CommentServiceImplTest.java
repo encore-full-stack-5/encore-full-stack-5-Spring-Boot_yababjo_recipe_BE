@@ -97,6 +97,18 @@ class CommentServiceImplTest {
         assertEquals("test3",byRecipeId.getContent());
     }
 
+    @Test
+    @Transactional
+    void findAllByUserId(){
+//        given
+        init();
+//        when
+        Recipe byId = recipeRepository.findById(1L).get();
+        Comment byUserId = commentRepository.findByUserId(byId.getId()).get(3);
+//        then
+        assertEquals("test3",byUserId.getContent());
+    }
+
     @BeforeEach
     void init(){
         User user = User.builder().id(1L).build();
