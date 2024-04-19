@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService{
-    private CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
     @Override
     public void save(CommentRequest req) {
         commentRepository.save(req.toEntity());
