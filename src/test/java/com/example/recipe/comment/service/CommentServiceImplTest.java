@@ -40,12 +40,12 @@ class CommentServiceImplTest {
     @Test
     void save() {
         init();
-        CommentRequest req = new CommentRequest(
-                comment.getContent(),
-                comment.getUser().getId(),
-                comment.getRecipe().getId()
-        );
-        commentService.save(req);
+//        CommentRequest req = new CommentRequest(
+//                comment.getContent(),
+//                comment.getUser().getId(),
+//                comment.getRecipe().getId()
+//        );
+//        commentService.save(req);
     }
 
     @Test
@@ -85,6 +85,18 @@ class CommentServiceImplTest {
 
     }
 
+    @Test
+    @Transactional
+    void findAllByRecipeId(){
+//        given
+        init();
+//        when
+        Recipe byId = recipeRepository.findById(1L).get();
+        Comment byRecipeId = commentRepository.findByRecipeId(byId.getId()).get(3);
+//        then
+        assertEquals("test3",byRecipeId.getContent());
+    }
+
     @BeforeEach
     void init(){
         User user = User.builder().id(1L).build();
@@ -100,12 +112,21 @@ class CommentServiceImplTest {
         // UserRepository와 RecipeRepository를 사용하여 데이터베이스에 저장
         recipeRepository.save(recipe);
 
-        comment = Comment.builder()
-                .id(1L)
-                .user(user)
-                .content("test")
-                .recipe(recipe)
-                .createdAt(LocalDateTime.now()) // createdAt도 초기화
-                .build();
+        for(Long i=0L;i<10;i++){
+            comment = Comment.builder()
+                    .id(i)
+                    .user(user)
+                    .content("test"+i)
+                    .recipe(recipe)
+                    .createdAt(LocalDateTime.now()) // createdAt도 초기화
+                    .build();
+            CommentRequest req = new CommentRequest(
+                    comment.getContent(),
+                    comment.getUser().getId(),
+                    comment.getRecipe().getId()
+            );
+            commentService.save(req);
+        }
+
     }
 }
