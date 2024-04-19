@@ -13,7 +13,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 @Table(name="TYPES")
-public class Type {
+public class
+
+
+
+
+
+Type {
     @Id
     @Column(name="TYPES_ID")
     private Long id;

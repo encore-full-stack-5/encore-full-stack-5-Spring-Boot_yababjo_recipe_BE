@@ -6,6 +6,7 @@ import com.example.recipe.global.domain.entity.Comment;
 import com.example.recipe.global.domain.repository.CommentRepository;
 import com.example.recipe.global.domain.repository.RecipeRepository;
 import com.example.recipe.global.domain.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,18 +16,17 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService{
-    private CommentRepository commentRepository;
-    private UserRepository userRepository;
-    private RecipeRepository recipeRepository;
+    private final CommentRepository commentRepository;
     @Override
     public void save(CommentRequest req) {
         commentRepository.save(req.toEntity());
     }
 
     @Override
+    @Transactional
     public Comment update(CommentRequest req, Long id) {
         Comment comment = commentRepository.findById(id).orElseThrow(
-                IllegalArgumentException::new);
+                EntityNotFoundException::new);
         comment.setContent(req.content());
         return comment;
     }
