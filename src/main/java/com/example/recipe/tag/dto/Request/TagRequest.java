@@ -6,23 +6,23 @@ import com.example.recipe.global.domain.entity.TagRecipeBridge;
 import com.example.recipe.global.domain.entity.User;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 public record TagRequest(
     Long id,
     String keyword,
     User user,
-    Recipe recipe,
-    TagRecipeBridge tagRecipeBridge
+    List<TagRecipeBridge> tagRecipeBridges
 ) {
-    public Tag toEntity(TagRequest request){
+    public Tag toEntity(TagRequest request) {
         return Tag.builder()
                 .id(request.id()) //
                 .keyword(request.keyword()) //
                 .user(request.user()) //
-                .recipe(request.recipe()) //
-                .tagRecipeBridges(tagRecipeBridge.builder().id(tagRecipeBridge.Id).build()) // TagRequest의 tagRecipeBridge 필드 값
+                .tagRecipeBridges(request.tagRecipeBridges()) // TagRequest의 tagRecipeBridge 필드 값
                 .build();
 
-
+    }
 }
 /*
  return Comment.builder()
