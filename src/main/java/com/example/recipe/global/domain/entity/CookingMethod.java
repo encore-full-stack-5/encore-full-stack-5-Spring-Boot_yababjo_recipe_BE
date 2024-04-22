@@ -21,6 +21,6 @@ public class CookingMethod {
     private Long id;
     @Column(name = "COOKING_METHOD_NAME")
     private String name;
-    @OneToMany(mappedBy = "cooking_method", fetch = FetchType.LAZY) // 매핑될 필드의 이름
+    @OneToMany(mappedBy = "cookingMethod", fetch = FetchType.LAZY) // 매핑될 필드의 이름
     private List<Recipe> recipes;
 }
