@@ -1,3 +1,4 @@
+
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
@@ -19,13 +20,8 @@ public class CookingMethod {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COOKING_METHOD_ID")
     private Long id;
-
-    @Column(name = "COOKING_METHOD_INDEX")
-    private int index;
-
-    @Column(name = "COOKING_METHOD_INSTRUCTION")
-    private String instruction;
-
-    @OneToMany(mappedBy = "cookingMethod")
+    @Column(name = "COOKING_METHOD_NAME")
+    private String name;
+    @OneToMany(mappedBy = "cookingMethod", fetch = FetchType.LAZY) // 매핑될 필드의 이름
     private List<Recipe> recipes;
 }
