@@ -1,7 +1,8 @@
 package com.example.recipe.ingredient.service;
 
-import com.example.recipe.global.domain.repository.FoodIngredientsRepository;
+import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,25 +14,25 @@ class IngredientServiceTest {
     @Autowired
     private IngredientService ingredientService;
 
-    @Autowired
-    private  FoodIngredientsRepository foodIngredientsRepository;
-
     @Test
     void save() {
-
+        IngredientRequest req = new IngredientRequest(1l,"ksh","type","ksh type");
+        ingredientService.save(req);
     }
 
     @Test
-    void findAll() {
+    void getAll() {
     }
 
     @Test
-    void getByName() {
+    void getById() {
+    }
+
+    @Test
+    void getDescriptionById() {
     }
 
     @Test
     void update() {
     }
-
-
 }
