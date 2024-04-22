@@ -1,4 +1,7 @@
 package com.example.recipe.global.domain.repository;
 
-public interface FoodIngredientsRepository {
+import com.example.recipe.global.domain.entity.FoodIngredientsRecipeBridge;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FoodIngredientsRepository extends JpaRepository<FoodIngredientsRecipeBridge, Long> {
 }
