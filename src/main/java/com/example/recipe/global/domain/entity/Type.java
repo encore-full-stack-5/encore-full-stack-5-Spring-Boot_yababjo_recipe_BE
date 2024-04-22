@@ -13,22 +13,14 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 @Table(name="TYPES")
-public class
-
-
-
-
-
-Type {
+public class Type {
     @Id
     @Column(name="TYPES_ID")
     private Long id;
     @Column(name="TYPES_TYPENAME")
     private String typeName;
 
-    @JoinColumn(name="FOOD_RECIPE_ID" )
-//    @OneToMany(mappedBy = "recipe")
-//    private Recipe recipe;
+    @JoinColumn(name="FOOD_RECIPE_ID")
     @ManyToOne
     private Recipe recipe;
 }
