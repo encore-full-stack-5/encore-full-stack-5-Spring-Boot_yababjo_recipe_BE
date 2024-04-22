@@ -19,6 +19,7 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="TAG_ID")
     private Long id;
+
     @Column(name="TAG_KEYWORD")
     private String keyword;
 

@@ -1,6 +1,9 @@
 package com.example.recipe.tag.service;
 
 import com.example.recipe.global.domain.entity.Tag;
+import com.example.recipe.global.domain.entity.TagRecipeBridge;
+import com.example.recipe.global.domain.repository.RecipeRepository;
+
 import com.example.recipe.global.domain.repository.TagRepository;
 import com.example.recipe.tag.dto.Request.TagRequest;
 import com.example.recipe.tag.dto.Response.TagResponse;
@@ -16,11 +19,16 @@ import java.util.List;
 @Service
 public class TagServiceImpl implements TagService {
 
+    private final RecipeRepository recipeRepository;
+
     private final TagRepository tagRepository;
+    private final TagRecipeBridge tagRecipeBridge;
+
 
     @Override
     public void save(TagRequest req) {
-       tagRepository.save(req.toEntity(req));
+        Tag tag =  tagRepository.save(req.toEntity());
+
     }
 
     @Override

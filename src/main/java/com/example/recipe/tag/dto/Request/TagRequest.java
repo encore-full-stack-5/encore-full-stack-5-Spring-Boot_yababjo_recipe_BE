@@ -11,25 +11,15 @@ import java.util.List;
 public record TagRequest(
     Long id,
     String keyword,
-    User user,
-    List<TagRecipeBridge> tagRecipeBridges
+    Long userId
 ) {
-    public Tag toEntity(TagRequest request) {
+    public Tag toEntity() {
+        User user = User.builder().id(userId).build();
         return Tag.builder()
-                .id(request.id()) //
-                .keyword(request.keyword()) //
-                .user(request.user()) //
-                .tagRecipeBridges(request.tagRecipeBridges()) // TagRequest의 tagRecipeBridge 필드 값
+                .id(this.id)
+                .keyword(this.keyword)
+                .user(user)
                 .build();
 
     }
 }
-/*
- return Comment.builder()
-            .content(content)
-            .createdAt(L
-            ocalDateTime.now())
-            .user(User.builder().id(userId).build())
-            .recipe(Recipe.builder().id(recipeId).build())
-            .build();
- */
