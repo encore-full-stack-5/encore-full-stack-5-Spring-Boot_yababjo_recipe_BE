@@ -1,4 +1,4 @@
 package com.example.recipe.recipe.service;
 
-public class RecipeServiceImpl {
+public class RecipeServiceImpl implements RecipeService{
 }
