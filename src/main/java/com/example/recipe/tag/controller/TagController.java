@@ -13,10 +13,7 @@ public class TagController {
 
     @PostMapping
     void insertSave(@RequestBody TagRequest req){
-
         tagService.save(req);
-
-
     }
 
 }
