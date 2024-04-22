@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.cglib.core.Local;
-import org.springframework.data.annotation.Id;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +16,8 @@ import java.util.List;
 @Getter @Builder
 @Table(name = "FOOD_RECIPE")
 public class Recipe {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOOD_RECIPE_ID", nullable = false)
     private Long id;
 

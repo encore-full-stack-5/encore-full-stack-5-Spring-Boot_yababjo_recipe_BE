@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface TagService{
   void save(TagRequest req);
-  List<Tag> showTag(TagResponse response);
+  List<Tag> findAll();
+  List<Tag> findByKeyword(String keyword);
 }

@@ -16,19 +16,16 @@ import java.util.List;
 @Table(name="TAGS")
 public class Tag {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="TAG_ID")
     private Long id;
+
     @Column(name="TAG_KEYWORD")
     private String keyword;
 
     @JoinColumn(name="USER_ID",nullable = false)
     @ManyToOne
     private User user;
-
-    @JoinColumn(name="FOOD_RECIPE_ID" )
-//    @OneToMany(mappedBy = "recipe")
-    @ManyToOne
-    private Recipe recipe;
 
     @OneToMany(mappedBy = "tag")
     private List<TagRecipeBridge> tagRecipeBridges;
