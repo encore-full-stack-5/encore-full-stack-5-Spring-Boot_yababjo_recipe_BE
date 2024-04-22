@@ -26,10 +26,6 @@ public class TagController {
       return  tagService.findAll();
     }
 
-    @GetMapping("/{keyword}")
-    List<Tag> findByKeyword(@PathVariable("keyword") String keyword){
 
-        return tagService.findByKeyword(keyword);
-    }
 
 }

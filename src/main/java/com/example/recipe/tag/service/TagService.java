@@ -7,7 +7,7 @@ import com.example.recipe.tag.dto.Response.TagResponse;
 import java.util.List;
 
 public interface TagService{
-  void save(TagRequest req);
+  void save(TagRequest tagRequest);
   List<Tag> findAll();
-  List<Tag> findByKeyword(String keyword);
+  Tag findById(Long id);
 }

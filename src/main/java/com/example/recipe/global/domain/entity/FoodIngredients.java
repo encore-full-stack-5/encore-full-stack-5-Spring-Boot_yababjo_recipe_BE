@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Getter
 @AllArgsConstructor
@@ -21,7 +23,6 @@ public class FoodIngredients {
     @Column(name = "FOODINGREDIENTS_DES")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RECIPE_ID")
-    private Recipe recipe;
+    @OneToMany(mappedBy = "foodIngredients")
+    private List<FoodIngredientsRecipeBridge> foodIngredientsRecipeBridges;
 }

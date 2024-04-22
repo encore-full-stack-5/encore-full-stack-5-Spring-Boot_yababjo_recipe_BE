@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -22,12 +23,11 @@ public class TagServiceImpl implements TagService {
     private final RecipeRepository recipeRepository;
 
     private final TagRepository tagRepository;
-    private final TagRecipeBridge tagRecipeBridge;
 
 
     @Override
-    public void save(TagRequest req) {
-        Tag tag =  tagRepository.save(req.toEntity());
+    public void save(TagRequest tagRequest) {
+        Tag tag =  tagRepository.save(tagRequest.toEntity());
 
     }
 
@@ -41,13 +41,10 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<Tag> findByKeyword(String keyword) {
+    public Tag findById(Long id) {
 
-        List<Tag> tags = new ArrayList<>();
-        List<Tag> byKeyword = tagRepository.findByKeyword(keyword);
-        tags.addAll(byKeyword);
-
-        return tags;
+        return tagRepository.findById(id)
+        .orElseThrow(()-> new IllegalArgumentException("없는 태크"));
     }
 
 
