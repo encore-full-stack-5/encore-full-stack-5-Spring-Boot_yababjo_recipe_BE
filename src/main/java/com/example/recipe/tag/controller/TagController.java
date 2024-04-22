@@ -1,10 +1,14 @@
 package com.example.recipe.tag.controller;
 
+import com.example.recipe.global.domain.entity.Tag;
 import com.example.recipe.tag.dto.Request.TagRequest;
 import com.example.recipe.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@RequestMapping("/api/v1/tag")
 @RestController
 @RequiredArgsConstructor
 public class TagController {
@@ -13,10 +17,19 @@ public class TagController {
 
     @PostMapping
     void insertSave(@RequestBody TagRequest req){
-
         tagService.save(req);
+    }
 
+    @GetMapping
+    List<Tag> findAll(){
 
+      return  tagService.findAll();
+    }
+
+    @GetMapping("/{keyword}")
+    List<Tag> findByKeyword(@PathVariable("keyword") String keyword){
+
+        return tagService.findByKeyword(keyword);
     }
 
 }
