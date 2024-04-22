@@ -1,3 +1,4 @@
+
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
