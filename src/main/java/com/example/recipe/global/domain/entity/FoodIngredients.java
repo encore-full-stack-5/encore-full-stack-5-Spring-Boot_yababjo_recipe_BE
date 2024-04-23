@@ -22,6 +22,8 @@ public class FoodIngredients {
     private String type;
     @Column(name = "FOODINGREDIENTS_DES")
     private String description;
+    @Column(name = "FOODINGREDIENTS_MEASUREMENT")
+    private double ingredientsMeasurement;
 
     @OneToMany(mappedBy = "foodIngredients")
     private List<FoodIngredientsRecipeBridge> foodIngredientsRecipeBridges;
