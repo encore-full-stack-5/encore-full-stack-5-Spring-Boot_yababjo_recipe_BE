@@ -6,6 +6,7 @@ import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
 import com.example.recipe.recipe.dto.recipeRequest.SauceRequest;
+import com.example.recipe.recipe.dto.response.RecipeResponse;
 import com.example.recipe.tag.dto.request.TagRequest;
 import com.example.recipe.tag.service.TagServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -49,5 +50,12 @@ public class RecipeServiceImpl implements RecipeService{
     @Override
     public List<Recipe> getRecipesSortedByCreateAt() {
         return recipeRepository.findAllByOrderByCreateATDesc();
+    }
+    @Override
+    public List<RecipeResponse> getByCookingMethodId(long cookingMethodId) {
+        return recipeRepository.findByCookingMethodId(cookingMethodId)
+                .stream()
+                .map(RecipeResponse::from)
+                .toList();
     }
 }
