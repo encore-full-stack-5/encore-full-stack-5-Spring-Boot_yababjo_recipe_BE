@@ -18,9 +18,6 @@ public class FoodIngredientsRecipeBridge {
     @Column(name = "FOODINGREDIENTS_RECIPE_BRIDGE_ID", nullable = false)
     private Long id;
 
-    @Column(name = "INGREDIENTS_MEASUREMENT")
-    private double ingredientsMeasurement;
-
     @JoinColumn(name="FOOD_RECIPE_ID", nullable = false)
     @ManyToOne
     private Recipe recipe;

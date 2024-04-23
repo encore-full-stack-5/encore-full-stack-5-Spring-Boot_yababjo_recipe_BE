@@ -23,6 +23,9 @@ public class Sauce {
     @Column(name = "SAUCE_NAME", nullable = false)
     private String sauceName;
 
+    @Column(name = "SAUCE_MEASUREMENT")
+    private double sauceMeasurement;
+
     @OneToMany(mappedBy = "sauce")
     private List<SauceRecipeBridge> sauceRecipeBridges;
 
