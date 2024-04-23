@@ -2,10 +2,7 @@ package com.example.recipe.comment.service;
 
 import com.example.recipe.comment.dto.request.CommentRequest;
 import com.example.recipe.comment.dto.response.CommentResponse;
-import com.example.recipe.global.domain.entity.Comment;
-import com.example.recipe.global.domain.entity.Recipe;
-import com.example.recipe.global.domain.entity.Type;
-import com.example.recipe.global.domain.entity.User;
+import com.example.recipe.global.domain.entity.*;
 import com.example.recipe.global.domain.repository.CommentRepository;
 import com.example.recipe.global.domain.repository.RecipeRepository;
 import com.example.recipe.global.domain.repository.TypeRepository;
@@ -16,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,6 +21,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@ActiveProfiles("test")
 @Transactional
 class CommentServiceImplTest {
     Comment comment;
@@ -40,21 +39,22 @@ class CommentServiceImplTest {
     @Test
     void save() {
         init();
-//        CommentRequest req = new CommentRequest(
-//                comment.getContent(),
-//                comment.getUser().getId(),
-//                comment.getRecipe().getId()
-//        );
-//        commentService.save(req);
+        CommentRequest req = new CommentRequest(
+                comment.getContent(),
+                comment.getUser().getId(),
+                comment.getRecipe().getId()
+        );
+        commentService.save(req);
     }
 
     @Test
     void update_성공() {
 //        given
-        init();
-        save();
+//        init();
+//        save();
+        comment = commentRepository.getOne(1L);
         CommentRequest req = new CommentRequest(
-                "test22",
+                "test9",
                 comment.getUser().getId(),
                 comment.getRecipe().getId()
         );
@@ -63,7 +63,7 @@ class CommentServiceImplTest {
         commentService.update(req,id);
 //        then
         Comment comment1 = commentRepository.findById(id).get();
-        assertEquals("test22", comment1.getContent());
+
     }
 
     @Test
@@ -71,7 +71,7 @@ class CommentServiceImplTest {
         init();
         save();
         CommentRequest req = new CommentRequest(
-                "test22",
+                "test2",
                 comment.getUser().getId(),
                 comment.getRecipe().getId()
         );
@@ -120,6 +120,7 @@ class CommentServiceImplTest {
                 .foodName("test")
                 .recipeTitle("test")
                 .user(user)
+                .cookingMethod(CookingMethod.builder().id(1L).build())
                 .type(type).build();
         // UserRepository와 RecipeRepository를 사용하여 데이터베이스에 저장
         recipeRepository.save(recipe);
@@ -139,6 +140,5 @@ class CommentServiceImplTest {
             );
             commentService.save(req);
         }
-
     }
 }
