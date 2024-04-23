@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="RATING")
@@ -17,27 +18,16 @@ public class Rating {
     @Column(name = "RATING_ID")
     private Long id;
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public void setRatingSum(double ratingSum) {
-        this.ratingSum = ratingSum;
-    }
-
     //    @Column(name = "COMMENT_RATING")
 //    private int rating;
-    @Column(name = "RATING_SUM")
-    private double ratingSum;
-
-    @Column(name = "RATING_COUNT")
-    private int count;
-
-    @JoinColumn(name="USER_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    @Column(name = "RATING")
+    private double rating;
 
     @JoinColumn(name="FOOD_RECIPE_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Recipe recipe;
+
+    @JoinColumn(name="USER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }

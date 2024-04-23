@@ -39,7 +39,6 @@ public class User {
 //    @OneToMany(mappedBy = "tag")
 //    private List<Tag> tag;
 
-    @Column(name="RATING_ID")
     @OneToMany(mappedBy = "user")
     private List<Rating> ratings;
 }
