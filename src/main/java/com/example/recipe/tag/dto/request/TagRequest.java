@@ -12,7 +12,7 @@ public record TagRequest(
         User user = User.builder().id(userId).build();
         return Tag.builder()
                 .id(this.id)
-                .keyword(this.keyword)
+                .keyword(keyword)
                 .user(user)
                 .build();
 
