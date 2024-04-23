@@ -1,5 +1,6 @@
 package com.example.recipe.recipe.service;
 
+import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.global.domain.repository.*;
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
@@ -9,6 +10,8 @@ import com.example.recipe.tag.dto.Request.TagRequest;
 import com.example.recipe.tag.service.TagServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +44,10 @@ public class RecipeServiceImpl implements RecipeService{
         cookingOrderRepository.save(orderReq.toEntity());
         tagRepository.save(tagRequest.toEntity());
         recipeRepository.save(recipeAddRequest.toEntity());
+    }
+
+    @Override
+    public List<Recipe> getRecipesSortedByCreateAt() {
+        return recipeRepository.findAllByOrderByCreateATDesc();
     }
 }
