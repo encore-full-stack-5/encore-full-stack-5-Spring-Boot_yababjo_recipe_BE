@@ -24,7 +24,7 @@ class IngredientServiceTest {
 
     @Test
     void save() {
-        IngredientRequest req = new IngredientRequest(1L,"ksh","type","ksh type");
+        IngredientRequest req = new IngredientRequest(1L,"ksh","type",0.0,"ksh type");
         ingredientService.save(req);
     }
 
