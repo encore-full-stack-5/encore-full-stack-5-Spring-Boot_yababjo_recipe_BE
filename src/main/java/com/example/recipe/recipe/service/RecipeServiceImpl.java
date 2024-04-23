@@ -1,6 +1,6 @@
 package com.example.recipe.recipe.service;
 
-import com.example.recipe.global.domain.entity.FoodIngredients;
+import com.example.recipe.global.domain.entity.FoodIngredient;
 import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.global.domain.repository.*;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
