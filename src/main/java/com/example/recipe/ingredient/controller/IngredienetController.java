@@ -5,6 +5,7 @@ import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.ingredient.dto.response.IngredientResponse;
 import com.example.recipe.ingredient.service.IngredientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @RequestMapping("/api/v1/ingredient")
 @RequiredArgsConstructor
 public class IngredienetController {
+    @Autowired
     private final IngredientService ingredientService;
 
 
