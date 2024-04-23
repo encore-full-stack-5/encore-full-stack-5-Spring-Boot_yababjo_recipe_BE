@@ -6,12 +6,12 @@ import com.example.recipe.global.domain.entity.TagRecipeBridge;
 
 public record TagRecipeBridgeRequest(
         Long id,
-        Long recipe_id,
-        Long tag_id
+        Long recipeId,
+        Long tagId
 ) {
     public TagRecipeBridge toEntity() {
-        Recipe recipe = Recipe.builder().id(recipe_id).build();
-        Tag tag = Tag.builder().id(tag_id).build();
+        Recipe recipe = Recipe.builder().id(recipeId).build();
+        Tag tag = Tag.builder().id(tagId).build();
         return TagRecipeBridge.builder()
                 .id(this.id)
                 .tag(tag)
