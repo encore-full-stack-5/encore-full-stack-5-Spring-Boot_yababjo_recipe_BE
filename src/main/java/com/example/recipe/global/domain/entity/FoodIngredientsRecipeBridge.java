@@ -24,5 +24,5 @@ public class FoodIngredientsRecipeBridge {
 
     @JoinColumn(name="FOODINGREDIENTS_ID", nullable = false)
     @ManyToOne
-    private FoodIngredients foodIngredients;
+    private FoodIngredient foodIngredients;
 }
