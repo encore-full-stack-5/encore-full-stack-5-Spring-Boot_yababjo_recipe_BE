@@ -1,15 +1,11 @@
 package com.example.recipe.tag.service;
 
 import com.example.recipe.global.domain.entity.Tag;
-import com.example.recipe.global.domain.entity.TagRecipeBridge;
 import com.example.recipe.global.domain.repository.RecipeRepository;
 
 import com.example.recipe.global.domain.repository.TagRepository;
-import com.example.recipe.tag.dto.Request.TagRequest;
-import com.example.recipe.tag.dto.Response.TagResponse;
-import lombok.NoArgsConstructor;
+import com.example.recipe.tag.dto.request.TagRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -45,6 +41,17 @@ public class TagServiceImpl implements TagService {
 
         return tagRepository.findById(id)
         .orElseThrow(()-> new IllegalArgumentException("없는 태크"));
+    }
+
+    @Override
+    public Optional<Tag> update(TagRequest tagRequest, Long id) {
+
+        Optional<Tag> byId = tagRepository.findById(id);
+        Tag tag = byId.orElseThrow(()-> new IllegalArgumentException("없는 테그"));
+
+        tag.setKeyword(tagRequest.keyword());
+
+        return byId;
     }
 
 

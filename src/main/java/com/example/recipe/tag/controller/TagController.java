@@ -1,7 +1,7 @@
 package com.example.recipe.tag.controller;
 
 import com.example.recipe.global.domain.entity.Tag;
-import com.example.recipe.tag.dto.Request.TagRequest;
+import com.example.recipe.tag.dto.request.TagRequest;
 import com.example.recipe.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

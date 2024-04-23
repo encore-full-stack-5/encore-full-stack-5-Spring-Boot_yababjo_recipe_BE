@@ -1,10 +1,7 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class Type {
     @Id
     @Column(name="TYPE_ID")
     private Long id;
-    @Column(name="TYPE_TYPENAME")
+    @Column(name="TYPE_TYPENAME")@Setter
     private String typeName;
 
 

@@ -1,4 +1,4 @@
-package com.example.recipe.tag.dto.Response;
+package com.example.recipe.tag.dto.response;
 
 
 

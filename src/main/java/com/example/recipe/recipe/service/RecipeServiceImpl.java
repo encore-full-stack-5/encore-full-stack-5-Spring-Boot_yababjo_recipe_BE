@@ -16,7 +16,7 @@ public class RecipeServiceImpl implements RecipeService{
     private final FoodIngredientsRepository foodIngredientsRepository;
     private final FoodIngredientsRecipeBridgeReopsitory foodIngredientsRecipeBridgeReopsitory;
     private final SauceRepository sauceRepository;
-    private final SauceRecipeBridgeReopsitory sauceRecipeBridgeReopsitory;
+
     private final CookingOrderRepository cookingOrderRepository;
 
     @Override
