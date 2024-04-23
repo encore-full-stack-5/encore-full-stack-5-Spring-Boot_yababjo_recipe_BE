@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class IngredientServiceImpl implements IngredientService {
 
-    private  FoodIngredientsRepository ingredientsRepository;
+    private final FoodIngredientsRepository ingredientsRepository;
     @Override
     public void save(IngredientRequest req) {
         ingredientsRepository.save(req.toEntity());

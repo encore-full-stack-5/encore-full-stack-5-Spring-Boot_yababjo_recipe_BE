@@ -1,6 +1,6 @@
 package com.example.recipe.recipe.service;
 
-import com.example.recipe.global.domain.entity.FoodIngredients;
+import com.example.recipe.global.domain.entity.FoodIngredient;
 import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.global.domain.repository.*;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
@@ -21,12 +21,13 @@ public class RecipeServiceImpl implements RecipeService{
 
     @Override
     public void addRecipe(RecipeAddRequest recipeAddRequest) {
+
         /* 저장해야 할 repository
             레시피, 재료브릿지, 재료 ,소스브릿지 , 소스
             조리 순서, 태그
          */
-        
         recipeRepository.save(recipeAddRequest.toEntity());
+
     }
 
 
