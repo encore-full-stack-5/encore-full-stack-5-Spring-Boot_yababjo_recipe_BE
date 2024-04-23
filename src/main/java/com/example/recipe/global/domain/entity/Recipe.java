@@ -78,7 +78,4 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe")
     private List<TagRecipeBridge> tagRecipeBridges;
-
-    @OneToMany(mappedBy = "recipe")
-    private List<Rating> ratings;
 }
