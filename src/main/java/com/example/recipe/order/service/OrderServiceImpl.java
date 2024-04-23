@@ -7,6 +7,7 @@ import com.example.recipe.global.domain.repository.RecipeRepository;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.order.dto.request.UpdateOrderRequest;
 import com.example.recipe.order.dto.response.OrderResponse;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.websocket.server.ServerEndpoint;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     private final CookingOrderRepository cookingOrderRepository;
-    private RecipeRepository recipeRepository;
+    private final RecipeRepository recipeRepository;
 
 
     @Override
-    public void save(OrderRequest req, Long id) {
-        cookingOrderRepository.save(req.toEntity());
+    public void save(OrderRequest req) {
+        Long byId = req.recipeId();
+        Recipe recipe = recipeRepository.findById(byId).orElseThrow(EntityNotFoundException::new);
+        CookingOrder cookingOrder = new CookingOrder(req.id(),req.order(),req.instruction(),recipe);
+        cookingOrderRepository.save(cookingOrder);
     }
 
 

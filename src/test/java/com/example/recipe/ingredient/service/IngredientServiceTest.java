@@ -45,6 +45,10 @@ class IngredientServiceTest {
 
     @Test
     void update() {
+         FoodIngredient  ingredient =  foodIngredientsRepository.getById(1L);
+        IngredientRequest req = new IngredientRequest(1L,"ramen","test","test");
+        Long id = ingredient.getId();
+        ingredientService.update(req, id);
 
     }
 }
