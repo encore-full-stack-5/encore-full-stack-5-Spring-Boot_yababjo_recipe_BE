@@ -39,4 +39,6 @@ public class User {
 //    @OneToMany(mappedBy = "tag")
 //    private List<Tag> tag;
 
+    @OneToMany(mappedBy = "user")
+    private List<Rating> ratings;
 }
