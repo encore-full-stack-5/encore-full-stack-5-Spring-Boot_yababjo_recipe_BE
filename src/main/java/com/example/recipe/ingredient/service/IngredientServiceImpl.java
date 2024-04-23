@@ -22,11 +22,7 @@ public class IngredientServiceImpl implements IngredientService {
         ingredientsRepository.save(req.toEntity());
     }
 
-    @Override
-    public List<FoodIngredient> getAll() {
 
-        return ingredientsRepository.findAll();
-    }
 
     @Override
     @Transactional

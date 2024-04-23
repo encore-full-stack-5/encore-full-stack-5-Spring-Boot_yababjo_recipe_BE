@@ -16,10 +16,7 @@ import java.util.Optional;
 public class IngredienetController {
     private final IngredientService ingredientService;
 
-    @GetMapping("/")
-    public List<FoodIngredient> getAll() {
-        return ingredientService.getAll();
-    }
+
     @GetMapping("/description/{id}")
     public String getDescriptionById(@RequestParam Long id) {
         return ingredientService.getDescriptionById(id);
