@@ -7,7 +7,7 @@ import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
 import com.example.recipe.recipe.dto.recipeRequest.SauceRequest;
 import com.example.recipe.recipe.service.RecipeService;
-import com.example.recipe.tag.dto.Request.TagRequest;
+import com.example.recipe.tag.dto.request.TagRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -35,4 +35,18 @@ public class TagRecipeBridgeServiceImpl implements TagRecipeBridgeService{
         return tagRecipeBridgeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("없는 태그브릿지"));
     }
+
+    @Override
+    public Optional<List<TagRecipeBridge>> findByRecipeId(Long recipeId) {
+        List<TagRecipeBridge> allByRecipeId = tagRecipeBridgeRepository.findAllByRecipeId(recipeId);
+
+        if (allByRecipeId.isEmpty()) {
+            return Optional.empty(); // 결과가 없는 경우 빈 Optional을 반환
+
+        } else {
+            return Optional.of(allByRecipeId); // 결과가 있는 경우 결과를 포함하는 Optional을 반환
+        }
+    }
+
+
 }

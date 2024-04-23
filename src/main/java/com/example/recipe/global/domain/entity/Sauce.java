@@ -1,10 +1,7 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -20,10 +17,10 @@ public class Sauce {
     @Column(name = "SAUCE_ID", nullable = false)
     private Long id;
 
-    @Column(name = "SAUCE_NAME", nullable = false)
+    @Column(name = "SAUCE_NAME", nullable = false)@Setter
     private String sauceName;
 
-    @Column(name = "SAUCE_MEASUREMENT")
+    @Column(name = "SAUCE_MEASUREMENT")@Setter
     private double sauceMeasurement;
 
     @OneToMany(mappedBy = "sauce")
