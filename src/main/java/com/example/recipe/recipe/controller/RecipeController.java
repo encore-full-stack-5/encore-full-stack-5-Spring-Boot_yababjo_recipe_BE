@@ -1,7 +1,6 @@
 package com.example.recipe.recipe.controller;
 
-import com.example.recipe.global.domain.entity.Recipe;
-import com.example.recipe.global.domain.repository.RecipeRepository;
+
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;

@@ -23,8 +23,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public void save(@RequestBody OrderRequest req,Long id) {
-        orderService.save(req,id);
+    public void save(@RequestBody OrderRequest req) {
+        orderService.save(req);
     }
 
     @GetMapping

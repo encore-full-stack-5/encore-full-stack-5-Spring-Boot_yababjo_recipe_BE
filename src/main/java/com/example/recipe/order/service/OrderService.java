@@ -9,7 +9,7 @@ import jakarta.persistence.criteria.Order;
 import java.util.List;
 
 public interface OrderService {
-    void save(OrderRequest req, Long id);
+    void save(OrderRequest req);
     List<CookingOrder> findByRecipeId(Long recipeId);
     void update(UpdateOrderRequest req, Long id);
 

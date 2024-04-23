@@ -24,7 +24,7 @@ class IngredientServiceTest {
 
     @Test
     void save() {
-        IngredientRequest req = new IngredientRequest(1L,"ksh","type",0.0,"ksh type");
+        IngredientRequest req = new IngredientRequest(1L,"ksh","FF",0.0D,"F");
         ingredientService.save(req);
     }
 
@@ -45,6 +45,10 @@ class IngredientServiceTest {
 
     @Test
     void update() {
+         FoodIngredient  ingredient =  foodIngredientsRepository.getById(1L);
+        IngredientRequest req = new IngredientRequest(1L,"ramen","test",0.0D,"test");
+        Long id = ingredient.getId();
+        ingredientService.update(req, id);
 
     }
 }
