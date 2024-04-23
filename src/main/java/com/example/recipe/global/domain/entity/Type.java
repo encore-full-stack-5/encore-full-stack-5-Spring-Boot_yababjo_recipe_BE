@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name="TYPES")
 public class Type {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="TYPE_ID")
     private Long id;
     @Column(name="TYPE_TYPENAME")@Setter
