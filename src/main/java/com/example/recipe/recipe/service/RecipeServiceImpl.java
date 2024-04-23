@@ -6,7 +6,7 @@ import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
 import com.example.recipe.recipe.dto.recipeRequest.SauceRequest;
-import com.example.recipe.tag.dto.Request.TagRequest;
+import com.example.recipe.tag.dto.request.TagRequest;
 import com.example.recipe.tag.service.TagServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class RecipeServiceImpl implements RecipeService{
     private final FoodIngredientsRepository foodIngredientsRepository;
     private final FoodIngredientsRecipeBridgeReopsitory foodIngredientsRecipeBridgeReopsitory;
     private final SauceRepository sauceRepository;
-    private final SauceRecipeBridgeReopsitory sauceRecipeBridgeReopsitory;
+
     private final CookingOrderRepository cookingOrderRepository;
 
     @Override
