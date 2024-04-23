@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Entity
 @AllArgsConstructor
@@ -15,12 +17,12 @@ import lombok.NoArgsConstructor;
 @Table(name="TYPES")
 public class Type {
     @Id
-    @Column(name="TYPES_ID")
+    @Column(name="TYPE_ID")
     private Long id;
-    @Column(name="TYPES_TYPENAME")
+    @Column(name="TYPE_TYPENAME")
     private String typeName;
 
-    @JoinColumn(name="FOOD_RECIPE_ID")
-    @ManyToOne
-    private Recipe recipe;
+
+    @OneToMany(mappedBy = "type")
+    private List<Recipe> recipe;
 }
