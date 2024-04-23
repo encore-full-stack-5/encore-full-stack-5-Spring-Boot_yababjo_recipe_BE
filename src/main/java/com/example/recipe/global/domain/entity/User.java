@@ -35,6 +35,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
+    @Column(name="RATING_ID")
+    @OneToMany(mappedBy = "user")
+    private List<Rating> ratings;
+
 //    @Column(name="TAG_ID" )
 //    @OneToMany(mappedBy = "tag")
 //    private List<Tag> tag;
