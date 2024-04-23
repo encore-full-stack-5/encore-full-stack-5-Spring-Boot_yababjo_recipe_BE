@@ -4,8 +4,11 @@ import com.example.recipe.global.domain.entity.FoodIngredient;
 import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.global.domain.repository.*;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
+import com.example.recipe.recipe.dto.response.RecipeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +31,14 @@ public class RecipeServiceImpl implements RecipeService{
          */
         recipeRepository.save(recipeAddRequest.toEntity());
 
+    }
+
+    @Override
+    public List<RecipeResponse> getByCookingMethodId(long cookingMethodId) {
+        return recipeRepository.findByCookingMethodId(cookingMethodId)
+                .stream()
+                .map(RecipeResponse::from)
+                .toList();
     }
 
 
