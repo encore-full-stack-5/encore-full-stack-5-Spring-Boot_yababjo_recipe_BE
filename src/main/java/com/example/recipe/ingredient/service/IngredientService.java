@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface IngredientService  {
     void  save(IngredientRequest req);
-    List<FoodIngredient> getAll();
+
     FoodIngredient getById(Long id);
     String getDescriptionById(Long id);
     FoodIngredient update(IngredientRequest req,Long id);

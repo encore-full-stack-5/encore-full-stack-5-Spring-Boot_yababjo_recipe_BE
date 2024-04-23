@@ -16,10 +16,7 @@ import java.util.Optional;
 public class IngredienetController {
     private final IngredientService ingredientService;
 
-    @GetMapping
-    public List<FoodIngredient> getAll() {
-        return ingredientService.getAll();
-    }
+
     @GetMapping("/description/{id}")
     public String getDescriptionById(@RequestParam Long id) {
         return ingredientService.getDescriptionById(id);
@@ -35,7 +32,7 @@ public class IngredienetController {
         return ingredientService.getById(id) ;
     }
     @PostMapping("/{id}")
-    public FoodIngredient update(@RequestBody IngredientRequest req,@PathVariable("id")Long id) {
+    public FoodIngredient update(@RequestBody IngredientRequest req, @PathVariable("id") Long id) {
         return ingredientService.update(req,id);
     }
 
