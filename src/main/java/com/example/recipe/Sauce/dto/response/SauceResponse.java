@@ -5,4 +5,5 @@ public record SauceResponse(
         String sauceName,
         double sauceMeasurement
 ) {
+
 }

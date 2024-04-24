@@ -30,6 +30,7 @@ public class Comment {
 
     @Column(name = "COMMENT_CREATED_AT")
     private LocalDateTime createdAt;
+
     @JoinColumn(name="USER_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
