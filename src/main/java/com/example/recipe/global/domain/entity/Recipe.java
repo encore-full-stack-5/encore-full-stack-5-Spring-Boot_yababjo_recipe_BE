@@ -18,13 +18,13 @@ import java.util.List;
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "FOOD_RECIPE_ID", nullable = false)
+    @Column(name = "FOOD_RECIPE_ID")
     private Long id;
 
-    @Column(name = "FOOD_RECIPE_FOOD_NAME", nullable = false)
+    @Column(name = "FOOD_RECIPE_FOOD_NAME")
     private String foodName;
 
-    @Column(name = "FOOD_RECIPE_TITLE", nullable = false)
+    @Column(name = "FOOD_RECIPE_TITLE")
     private String recipeTitle;
 
     @Column(name = "FOOD_RECIPE_COOKING_TIP")
@@ -48,11 +48,11 @@ public class Recipe {
     @Column(name = "FOOD_RECIPE_VIEWS")
     private int views;
 
-    @JoinColumn(name="USER_ID", nullable = false)
+    @JoinColumn(name="USER_ID")
     @ManyToOne
     private User user;
 
-    @JoinColumn(name="TYPE_ID", nullable = false)
+    @JoinColumn(name="TYPE_ID")
     @ManyToOne
     private Type type;
 
@@ -60,7 +60,7 @@ public class Recipe {
 //    @ManyToOne
 //    private CookingMethod cookingMethod;
 
-    @JoinColumn(name="COOKING_METHOD_ID", nullable = false)
+    @JoinColumn(name="COOKING_METHOD_ID")
     @ManyToOne
     private CookingMethod cookingMethod;
 
