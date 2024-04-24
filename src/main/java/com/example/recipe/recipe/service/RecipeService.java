@@ -15,14 +15,18 @@ public interface RecipeService {
 
 
     void addRecipe(
-            RecipeAddRequest recipeAddRequest,
+            RecipeAddRequest recipeAddRequest
+
+//            SauceRecipeBridgeRequest sauceRecipeBridgeRequest,
+
+//            TagRecipeBridgeRequest tagRecipeBridgeRequests
+    );
+
+    void addother(
             OrderRequest orderReqs,
             IngredientRequest ingredientRequests,
-
             SauceRequest sauceRequests,
-//            SauceRecipeBridgeRequest sauceRecipeBridgeRequest,
             TagRequest tagRequests
-//            TagRecipeBridgeRequest tagRecipeBridgeRequests
     );
 
     List<Recipe> getRecipesSortedByCreateAt();

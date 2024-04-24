@@ -2,6 +2,7 @@ package com.example.recipe.recipe.controller;
 
 import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.recipe.RecipeRequestWrapper;
+import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
 import com.example.recipe.recipe.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +19,15 @@ public class RecipeController {
 
     @PostMapping("/addrecipe")
     public void addRecipe(
-            @RequestBody RecipeRequestWrapper recipeRequestWrapper
+            @RequestBody RecipeAddRequest recipeAddRequest
             ){
             recipeService.addRecipe(
-                    recipeRequestWrapper.getRecipeAddRequest(),
-                    recipeRequestWrapper.getOrderRequest(),
-                    recipeRequestWrapper.getIngredientRequests(),
-                    recipeRequestWrapper.getSauceRequests(),
-//                    recipeRequestWrapper.getSauceRecipeBridgeRequest(),
-                    recipeRequestWrapper.getTagRequests()
+                    recipeAddRequest
+//                    recipeRequestWrapper.getOrderRequest(),
+//                    recipeRequestWrapper.getIngredientRequests(),
+//                    recipeRequestWrapper.getSauceRequests(),
+////                  recipeRequestWrapper.getSauceRecipeBridgeRequest(),
+//                    recipeRequestWrapper.getTagRequests()
 //                    recipeRequestWrapper.getTagRecipeBridgeRequests()
             );
     }

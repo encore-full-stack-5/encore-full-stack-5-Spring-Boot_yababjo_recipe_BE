@@ -42,13 +42,9 @@ public class RecipeServiceImpl implements RecipeService{
 
     @Override
     public void addRecipe(
-            RecipeAddRequest recipeAddRequest,
-            OrderRequest orderReqs,
-            IngredientRequest ingredientRequests,
-            SauceRequest sauceRequests,
-//            SauceRecipeBridgeRequest sauceRecipeBridgeRequest,
-            TagRequest tagRequests
-//            TagRecipeBridgeRequest tagRecipeBridgeRequests
+            RecipeAddRequest recipeAddRequest
+//          SauceRecipeBridgeRequest sauceRecipeBridgeRequest,
+//          TagRecipeBridgeRequest tagRecipeBridgeRequests
     )   {
         /*
             저장해야 할 repository
@@ -56,23 +52,34 @@ public class RecipeServiceImpl implements RecipeService{
             조리 순서, 태그
          */
         recipeRepository.save(recipeAddRequest.toEntity());
+    }
 
+    @Override
+    public void addother(
+            OrderRequest orderReqs,
+            IngredientRequest ingredientRequests,
+            SauceRequest sauceRequests,
+            TagRequest tagRequests
+            ) {
         cookingOrderRepository.save(orderReqs.toEntity());
 
         ingredientService.save(ingredientRequests);
         // 재료 브릿지 서비스 필요
 
         sauceService.save(sauceRequests);
-//        sauceRecipeBridgeService.save(sauceRecipeBridgeRequest);
 
         tagService.save(tagRequests);
+//        sauceRecipeBridgeService.save(sauceRecipeBridgeRequest);
 //        tagRecipeBridgeService.save(tagRecipeBridgeRequests);
+
     }
+
 
     @Override
     public List<Recipe> getRecipesSortedByCreateAt() {
         return recipeRepository.findAllByOrderByCreateATDesc();
     }
+
 
     @Override
     public List<Recipe> getRecipesSortedByType(Long typeID) {
