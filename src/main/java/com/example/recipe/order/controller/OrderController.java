@@ -4,6 +4,7 @@ import com.example.recipe.global.domain.entity.CookingOrder;
 import com.example.recipe.global.domain.repository.RecipeRepository;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.order.dto.request.UpdateOrderRequest;
+import com.example.recipe.order.dto.response.OrderResponse;
 import com.example.recipe.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,8 @@ public class OrderController {
         orderService.save(req);
     }
 
-    @GetMapping
-    public List<CookingOrder> findByRecipeId(Long recipeId) {
+    @GetMapping("/byrecipe/{recipeId}")
+    public List<OrderResponse> findByRecipeId(@PathVariable Long recipeId) {
         return orderService.findByRecipeId(recipeId);
     }
 
