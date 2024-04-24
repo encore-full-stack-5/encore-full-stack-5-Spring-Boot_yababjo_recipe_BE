@@ -13,6 +13,7 @@ import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.ingredient.service.IngredientServiceImpl;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
+import com.example.recipe.recipe.dto.response.RecipeResponse;
 import com.example.recipe.tag.dto.request.TagRequest;
 import com.example.recipe.tag.service.TagServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -51,10 +52,6 @@ public class RecipeServiceImpl implements RecipeService{
             레시피, 재료브릿지, 재료 ,소스브릿지 , 소스
             조리 순서, 태그
          */
-        foodIngredientsRepository.save(ingredientRequest.toEntity());
-        sauceRepository.save(sauceRequest.toEntity());
-        cookingOrderRepository.save(orderReq.toEntity());
-        tagRepository.save(tagRequest.toEntity());
         recipeRepository.save(recipeAddRequest.toEntity());
     }
 
