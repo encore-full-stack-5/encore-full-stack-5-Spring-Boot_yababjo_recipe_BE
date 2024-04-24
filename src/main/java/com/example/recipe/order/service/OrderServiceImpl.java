@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public List<CookingOrder> findByRecipeId(Long recipeId) {
+    public List<OrderResponse> findByRecipeId(Long recipeId) {
 //        Recipe recipe = recipeRepository.findById(recipeId).orElse(null);
 //        List<CookingOrder> orders = new ArrayList<>();
 //        orders.addAll(recipe.getCookingOrders());
@@ -45,7 +45,9 @@ public class OrderServiceImpl implements OrderService {
 
         if (recipeOptional.isPresent()) {
             Recipe recipe = recipeOptional.get();
-            return recipe.getCookingOrders();
+            return recipe.getCookingOrders().stream().map(
+                    OrderResponse::from
+            ).toList();
         } else {
             return Collections.emptyList(); // Return an empty list if the recipe is not found
         }
