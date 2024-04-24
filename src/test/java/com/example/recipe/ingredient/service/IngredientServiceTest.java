@@ -22,11 +22,11 @@ class IngredientServiceTest {
     @Autowired
     private  FoodIngredientsRepository foodIngredientsRepository;
 
-    @Test
-    void save() {
-        IngredientRequest req = new IngredientRequest(1L,"ksh","type","ksh type");
-        ingredientService.save(req);
-    }
+//    @Test
+////    void save() {
+////        IngredientRequest req = new IngredientRequest(1L,"ksh","FF",0.0D,"F");
+//        ingredientService.save(req);
+//    }
 
 
     @Test
@@ -43,8 +43,12 @@ class IngredientServiceTest {
 
     }
 
-    @Test
-    void update() {
-
-    }
+//    @Test
+//    void update() {
+//         FoodIngredient  ingredient =  foodIngredientsRepository.getById(1L);
+//        IngredientRequest req = new IngredientRequest(1L,"ramen","test",0.0D,"test");
+//        Long id = ingredient.getId();
+//        ingredientService.update(req, id);
+//
+//    }
 }

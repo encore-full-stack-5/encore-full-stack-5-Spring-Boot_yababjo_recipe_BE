@@ -10,6 +10,7 @@ public record UpdateOrderRequest(
         return CookingOrder.builder()
                 .order(order)
                 .instruction(instruction)
+
                 .build();
     }
 }

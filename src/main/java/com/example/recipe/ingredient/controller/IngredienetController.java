@@ -20,7 +20,7 @@ public class IngredienetController {
 
 
     @GetMapping("/description/{id}")
-    public String getDescriptionById(@RequestParam Long id) {
+    public String getDescriptionById(@PathVariable("id") Long id) {
         return ingredientService.getDescriptionById(id);
     }
     @PostMapping

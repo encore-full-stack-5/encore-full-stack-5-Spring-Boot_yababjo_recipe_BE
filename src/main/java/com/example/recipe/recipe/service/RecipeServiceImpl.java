@@ -48,9 +48,13 @@ public class RecipeServiceImpl implements RecipeService{
     )   {
         /*
             저장해야 할 repository
-            레시피, 재료 브릿지, 재료 ,소스 브릿지 , 소스
+            레시피, 재료브릿지, 재료 ,소스브릿지 , 소스
             조리 순서, 태그
          */
+        foodIngredientsRepository.save(ingredientRequest.toEntity());
+        sauceRepository.save(sauceRequest.toEntity());
+        cookingOrderRepository.save(orderReq.toEntity());
+        tagRepository.save(tagRequest.toEntity());
         recipeRepository.save(recipeAddRequest.toEntity());
     }
 
@@ -85,5 +89,12 @@ public class RecipeServiceImpl implements RecipeService{
     public List<Recipe> getRecipesSortedByType(Long typeID) {
         long typeId = new Type().getId();
         return recipeRepository.findByTypeId(typeId);
+    }
+    @Override
+    public List<RecipeResponse> getByCookingMethodId(long cookingMethodId) {
+        return recipeRepository.findByCookingMethodId(cookingMethodId)
+                .stream()
+                .map(RecipeResponse::from)
+                .toList();
     }
 }

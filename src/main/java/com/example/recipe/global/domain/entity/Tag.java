@@ -14,17 +14,13 @@ import java.util.List;
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="TAG_ID")
+    @Column(name = "TAG_ID")
     private Long id;
 
-    @Column(name="TAG_KEYWORD")@Setter
+    @Column(name = "TAG_KEYWORD")
+    @Setter
     private String keyword;
 
-    @JoinColumn(name="USER_ID",nullable = false)
-    @ManyToOne
-    private User user;
-
-    @OneToMany(mappedBy = "tag")
+    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TagRecipeBridge> tagRecipeBridges;
-
 }

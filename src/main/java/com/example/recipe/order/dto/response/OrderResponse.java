@@ -1,9 +1,11 @@
 package com.example.recipe.order.dto.response;
 
+import com.example.recipe.global.domain.dto.RecipeDto;
 import com.example.recipe.global.domain.entity.CookingOrder;
+import com.example.recipe.global.domain.entity.Recipe;
 
 public record OrderResponse(
-        Long id, int order, String instruction, Long recipeId
+        Long id, int order, String instruction, RecipeDto recipe
 ) {
     public static OrderResponse from(CookingOrder order) {
 
@@ -11,7 +13,7 @@ public record OrderResponse(
                 order.getId(),
                 order.getOrder(),
                 order.getInstruction(),
-                order.getRecipe().getId()
+                RecipeDto.toDto(order.getRecipe())
         );
     }
 }

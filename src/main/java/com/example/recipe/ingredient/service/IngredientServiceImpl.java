@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class IngredientServiceImpl implements IngredientService {
 
-    private  final FoodIngredientsRepository ingredientsRepository;
+    private final FoodIngredientsRepository ingredientsRepository;
     @Override
     public void save(IngredientRequest req) {
         ingredientsRepository.save(req.toEntity());
@@ -27,7 +27,7 @@ public class IngredientServiceImpl implements IngredientService {
     @Override
     @Transactional
     public FoodIngredient getById(Long id) {
-        Optional<FoodIngredient> byId = Optional.of(ingredientsRepository.getById(id));
+        Optional<FoodIngredient> byId = ingredientsRepository.findById(id);
         FoodIngredient ingredient = byId.orElse(new FoodIngredient());
 
         return ingredient;
@@ -35,9 +35,8 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public String getDescriptionById(Long id) {
-        Optional<FoodIngredient> byId = Optional.of(ingredientsRepository.getById(id));
+        Optional<FoodIngredient> byId = ingredientsRepository.findById(id);
         String description = byId.orElse(new FoodIngredient()).getDescription();
-
 
         return description;
     }

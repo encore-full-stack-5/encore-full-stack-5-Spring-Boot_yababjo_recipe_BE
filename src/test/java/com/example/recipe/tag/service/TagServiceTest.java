@@ -1,4 +1,4 @@
-//package com.example.recipe.tag.service;
+package com.example.recipe.tag.service;
 //
 //import com.example.recipe.global.domain.entity.Tag;
 //import com.example.recipe.global.domain.entity.User;
@@ -10,15 +10,15 @@
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;
 //import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest;
 //
 //import java.util.ArrayList;
 //import java.util.Collections;
 //import java.util.List;
 //
 //import static org.junit.jupiter.api.Assertions.*;
-//@SpringBootTest
-//class TagServiceTest {
+@SpringBootTest
+class TagServiceTest {
 //
 //    protected List<Tag> tagTest;
 //
@@ -61,4 +61,4 @@
 ////
 ////
 ////    }
-//}
+}

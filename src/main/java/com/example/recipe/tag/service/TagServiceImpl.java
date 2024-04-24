@@ -51,7 +51,9 @@ public class TagServiceImpl implements TagService {
 
         tag.setKeyword(tagRequest.keyword());
 
-        return byId;
+       tagRepository.save(tag);
+
+        return Optional.of(tag);
     }
 
 
