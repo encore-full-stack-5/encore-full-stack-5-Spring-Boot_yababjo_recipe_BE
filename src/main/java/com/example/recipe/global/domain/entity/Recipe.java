@@ -56,10 +56,6 @@ public class Recipe {
     @ManyToOne
     private Type type;
 
-//    @JoinColumn(name="COOKING_METHOD_ID", nullable = false)
-//    @ManyToOne
-//    private CookingMethod cookingMethod;
-
     @JoinColumn(name="COOKING_METHOD_ID", nullable = false)
     @ManyToOne
     private CookingMethod cookingMethod;

@@ -4,4 +4,5 @@ public record TypeResponse(
         Long id,
         String typeName
 ) {
+
 }
