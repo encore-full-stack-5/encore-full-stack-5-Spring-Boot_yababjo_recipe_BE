@@ -5,7 +5,6 @@ import com.example.recipe.global.domain.entity.Tag;
 import com.example.recipe.global.domain.entity.TagRecipeBridge;
 
 public record TagRecipeBridgeRequest(
-        Long id,
         Long recipeId,
         Long tagId
 ) {
@@ -13,7 +12,6 @@ public record TagRecipeBridgeRequest(
         Recipe recipe = Recipe.builder().id(recipeId).build();
         Tag tag = Tag.builder().id(tagId).build();
         return TagRecipeBridge.builder()
-                .id(this.id)
                 .tag(tag)
                 .recipe(recipe)
                 .build();
