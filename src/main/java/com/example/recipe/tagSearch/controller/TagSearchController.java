@@ -33,22 +33,12 @@ public class TagSearchController {
 //        return tagSearchService.searchTag(keyword);
 //    }
 
-    @GetMapping("/search")
-    public List<String> searchTag(@RequestParam("keyword") String keyword) {
-//        try {
-//            return tagSearchService.searchByKeyword(keyword);
-//        } catch (IOException e) {
-//            // IOException 처리
-//            e.printStackTrace(); // 예외 메시지 출력 또는 로깅
-//            return Collections.emptyList(); // 빈 리스트 반환 또는 다른 처리 방법 선택
-//        }
-        // Elasticsearch에서 검색을 수행하고 결과를 받아옴
+//    @GetMapping("/search")
+    public List<String> searchTag(String keyword) {
         SearchResponse searchResponse = performElasticsearchSearch(keyword);
 
-        // ElasticsearchService를 사용하여 검색 결과에서 "keyword" 필드를 추출
         List<String> keywords = tagSearchService.extractKeywordsFromSearchResponse(searchResponse);
 
-        // 추출한 "keyword" 필드 값들을 반환
         return keywords;
     }
 
@@ -68,5 +58,6 @@ public class TagSearchController {
             // IOException 발생 시 예외를 처리합니다.
             e.printStackTrace(); // 실제 프로덕션 환경에서는 로깅이나 적절한 예외 처리를 수행해야 합니다.
             return null; // 예외 발생 시 null을 반환하거나 적절한 대체값을 반환합니다.
-        }    }
+        }
+    }
 }

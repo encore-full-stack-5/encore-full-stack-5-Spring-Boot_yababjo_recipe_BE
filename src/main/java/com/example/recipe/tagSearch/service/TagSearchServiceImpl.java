@@ -29,37 +29,6 @@ public class TagSearchServiceImpl implements TagSearchService {
         searchTagRepository.save(tag);
     }
 
-//    public List<String> searchByKeyword(String keyword) throws IOException {
-//        // Elasticsearch의 인덱스명
-//        String index = "tag";
-//
-//        // 검색 요청 생성
-//        SearchRequest searchRequest = new SearchRequest(index);
-//        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-//
-//        // 쿼리 생성: 여기서는 키워드를 기반으로 match 쿼리를 생성합니다.
-//        searchSourceBuilder.query(QueryBuilders.matchQuery("*", keyword));
-//
-//        // 결과를 score에 따라 내림차순으로 정렬합니다.
-//        searchSourceBuilder.sort("_score", SortOrder.DESC);
-//
-//        // 검색 요청에 쿼리 설정
-//        searchRequest.source(searchSourceBuilder);
-//
-//        // Elasticsearch로 검색 요청 보내기
-//        SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
-//
-//        // 검색 결과 처리
-//        List<String> resultList = new ArrayList<>();
-//        response.getHits().forEach(hit -> {
-//            String sourceAsString = hit.getSourceAsString();
-//            // 검색 결과를 리스트에 추가
-//            resultList.add(sourceAsString);
-//        });
-//
-//        return resultList;
-//    }
-
     public List<String> extractKeywordsFromSearchResponse(SearchResponse response) {
         List<String> keywords = new ArrayList<>();
 

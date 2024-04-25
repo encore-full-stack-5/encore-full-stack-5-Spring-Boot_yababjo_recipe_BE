@@ -4,7 +4,6 @@ package com.example.recipe.tag.dto.response;
 
 import com.example.recipe.global.domain.entity.Tag;
 import com.example.recipe.global.domain.entity.TagRecipeBridge;
-import com.example.recipe.global.domain.entity.User;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ public record TagResponse(
         List<TagRecipeBridge> tagRecipeBridge
 
 ){
-    public static TagResponse form(Tag tag){
+    public static TagResponse from(Tag tag){
         return new TagResponse(
                 tag.getId(),
                 tag.getKeyword(),

@@ -5,12 +5,11 @@ import com.example.recipe.global.domain.repository.RecipeRepository;
 
 import com.example.recipe.global.domain.repository.TagRepository;
 import com.example.recipe.tag.dto.request.TagRequest;
+import com.example.recipe.tag.dto.response.TagResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
@@ -43,12 +42,16 @@ public class TagServiceImpl implements TagService {
         .orElseThrow(()-> new IllegalArgumentException("없는 태크"));
     }
 
-    public List<Tag> findByKeyword(String keyword) {
-        List<Tag> tags = new ArrayList<>();
-        List<Tag> byKeyword = tagRepository.findAll();
-        tags.addAll(all);
-
-        return tags;
+    @Override
+    public List<TagResponse> findByKeyword(List<String> keywords) {
+        List<TagResponse> tagResponses = new ArrayList<>();
+        for (String keyword : keywords) {
+            List<Tag> tags = tagRepository.findByKeyword(keyword);
+            for (Tag tag : tags) {
+                tagResponses.add(TagResponse.from(tag));
+            }
+        }
+        return tagResponses;
     }
     @Override
     public Optional<Tag> update(TagRequest tagRequest, Long id) {
