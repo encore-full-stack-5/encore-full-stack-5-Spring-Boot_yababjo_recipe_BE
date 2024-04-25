@@ -6,6 +6,7 @@ import com.example.recipe.recipe.RecipeRequestWrapper;
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
+import com.example.recipe.recipe.dto.response.RecipeResponse;
 import com.example.recipe.recipe.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class RecipeController {
     }
 
     @GetMapping("/{uid}")
-    public List<Recipe> getRecipesByUserId (Long userId){
+    public List<RecipeResponse> getRecipesByUserId (@PathVariable("uid") Long userId){
         return recipeService.getRecipesByUserId(userId);
     }
 

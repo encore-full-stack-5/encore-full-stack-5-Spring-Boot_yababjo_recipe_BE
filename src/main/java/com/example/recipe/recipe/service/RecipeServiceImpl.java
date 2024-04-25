@@ -18,7 +18,11 @@ import com.example.recipe.tag.service.TagServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 @RequiredArgsConstructor
@@ -39,6 +43,7 @@ public class RecipeServiceImpl implements RecipeService{
     private final SauceRecipeBridgeServiceImpl sauceRecipeBridgeService;
     private final TagServiceImpl tagService;
     private final TagRecipeBridgeServiceImpl tagRecipeBridgeService;
+    private final UserRepository userRepository;
 
     @Override
     public void addRecipe(
@@ -98,8 +103,19 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
-    public List<Recipe> getRecipesByUserId(Long userId) {
-        Long id = new User().getId();
-        return recipeRepository.findByUserId(id);
+    public List<RecipeResponse> getRecipesByUserId(Long userId) {
+//        Long id = new User().getId();
+        Optional<User> userOptional = userRepository.findById(userId);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+           return user.getRecipe().stream().map(
+                   RecipeResponse::from
+           ).toList();
+        } else {
+            return  Collections.emptyList();
+        }
+
+
     }
 }

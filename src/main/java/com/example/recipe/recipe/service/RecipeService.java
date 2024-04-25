@@ -1,8 +1,6 @@
 package com.example.recipe.recipe.service;
 
 import com.example.recipe.Sauce.dto.request.SauceRequest;
-import com.example.recipe.SauceRecipeBridge.dto.request.SauceRecipeBridgeRequest;
-import com.example.recipe.TagRecipeBridge.dto.request.TagRecipeBridgeRequest;
 import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
@@ -31,5 +29,5 @@ public interface RecipeService {
 
     List<RecipeResponse> getByCookingMethodId(Long cookingMethodId);  // 방법별 정렬
 
-    List<Recipe> getRecipesByUserId(Long userId);
+    List<RecipeResponse> getRecipesByUserId(Long userId);
 }

@@ -1,12 +1,13 @@
 package com.example.recipe.recipe.dto.response;
 
+import com.example.recipe.global.domain.dto.UserDto;
 import com.example.recipe.global.domain.entity.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 public record RecipeResponse(
-        Long userId,
+        UserDto user,
         String recipeTitle,
         String foodName,
         long typeId,
@@ -22,7 +23,7 @@ public record RecipeResponse(
 ) {
     public static RecipeResponse from(Recipe recipe) {
         return new RecipeResponse(
-                recipe.getUser().getId(),
+                UserDto.toDto(recipe.getUser()),
                 recipe.getRecipeTitle(),
                 recipe.getFoodName(),
                 recipe.getType().getId(),
