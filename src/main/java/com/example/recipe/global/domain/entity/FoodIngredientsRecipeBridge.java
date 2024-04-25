@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 @Table(name = "FOODINGREDIENTS_RECIPE_BRIDGE")
-public class FoodIngredientsRecipeBridge {
+public class
+FoodIngredientsRecipeBridge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOODINGREDIENTS_RECIPE_BRIDGE_ID", nullable = false)

@@ -2,7 +2,9 @@ package com.example.recipe.tag.controller;
 
 import com.example.recipe.global.domain.entity.Tag;
 import com.example.recipe.tag.dto.request.TagRequest;
+import com.example.recipe.tag.dto.response.TagResponse;
 import com.example.recipe.tag.service.TagService;
+import com.example.recipe.tagSearch.controller.TagSearchController;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class TagController {
 
     private final TagService tagService;
+    private final TagSearchController tagSearchController;
 
     @PostMapping
     public void save(@RequestBody TagRequest tagRequest){
@@ -36,10 +39,11 @@ public class TagController {
         return tagService.findAll();
     }
 
-
-
-
-
+    @GetMapping("/search")
+    public List<TagResponse> findByKeyword(@RequestParam("keyword") String keyword){
+        List<String> keywords = tagSearchController.searchTag(keyword);
+        return tagService.findByKeyword(keywords);
+    }
 
 
 }

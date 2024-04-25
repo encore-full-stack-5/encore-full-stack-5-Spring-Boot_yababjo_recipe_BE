@@ -18,7 +18,7 @@ import com.example.recipe.global.config.TokenInfo;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/vi/user")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
     private final JwtTokenUtils jwtTokenUtils;

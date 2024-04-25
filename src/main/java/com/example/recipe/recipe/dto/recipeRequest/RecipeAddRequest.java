@@ -5,42 +5,31 @@ import com.example.recipe.global.domain.entity.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 public record RecipeAddRequest(
-        Long userId,
         String recipeTitle,
         String foodName,
-        long cookingMethodId,
-        long typeId,
+        Long cookingMethodId,
+        Long typeId,
         int servingSize,
         int level,
         double cookingTime,
-        List<FoodIngredientsRecipeBridge> foodIngredientsRecipeBridges,
-        List<SauceRecipeBridge> sauceRecipeBridges,
-        List<CookingOrder> cookingOrders,
-        String cookingTip,
-        List<TagRecipeBridge> tagRecipeBridges
+        String cookingTip
+
 ) {
     public Recipe toEntity(){
         return Recipe.builder()
-                .user(User.builder()
-                        .id(userId)
-                        .build())
                 .recipeTitle(recipeTitle)
                 .foodName(foodName)
-                .cookingMethod(CookingMethod.builder()
-                        .id(cookingMethodId)
-                        .build())
                 .type(Type.builder()
                         .id(typeId)
                         .build())
+                .cookingMethod(CookingMethod.builder()
+                        .id(cookingMethodId)
+                        .build())
                 .servingSize(servingSize)
                 .level(level)
+                .cookingTip(cookingTip)
                 .cookingTime(cookingTime)
-                .foodIngredientsRecipeBridges(foodIngredientsRecipeBridges)
-                .sauceRecipeBridges(sauceRecipeBridges)
-                .cookingOrders(cookingOrders)
-                .tagRecipeBridges(tagRecipeBridges)
                 .createAT(LocalDateTime.now())
                 .build();
     }
