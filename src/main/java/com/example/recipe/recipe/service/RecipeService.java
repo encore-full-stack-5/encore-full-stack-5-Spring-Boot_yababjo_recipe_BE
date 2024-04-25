@@ -26,8 +26,8 @@ public interface RecipeService {
             TagRequest tagRequests
     );
 
-    List<Recipe> getRecipesSortedByCreateAt();
-    List<Recipe> getRecipesSortedByType(Long typeId);
+    List<Recipe> getRecipesSortedByCreateAt(); // 최신순 정렬
+    List<Recipe> getRecipesSortedByTypeId(Long typeId); // 종류별 정렬
 
-    public List<RecipeResponse> getByCookingMethodId(long cookingMethodId);
+    List<RecipeResponse> getByCookingMethodId(Long cookingMethodId);  // 방법별 정렬
 }

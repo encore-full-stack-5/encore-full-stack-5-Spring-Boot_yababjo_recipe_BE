@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/vi/recipe")
+@RequestMapping("/api/v1/recipe")
 public class RecipeController {
     @Autowired
     private final RecipeService recipeService;
@@ -42,12 +42,7 @@ public class RecipeController {
 
     @GetMapping("/type/{typeid}")
     public List<Recipe> getRecipesSortedByType(@PathVariable("typeid") Long typeId){
-        return recipeService.getRecipesSortedByType(typeId);
+        return recipeService.getRecipesSortedByTypeId(typeId);
     }
-
-
-
-//    @PutMapping("/updaterecipe/{uid}")
-//    public Recipe updateRecipe()
 
 }

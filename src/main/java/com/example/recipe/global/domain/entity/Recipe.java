@@ -21,10 +21,10 @@ public class Recipe {
     @Column(name = "FOOD_RECIPE_ID")
     private Long id;
 
-    @Column(name = "FOOD_RECIPE_FOOD_NAME")
+    @Column(name = "FOOD_RECIPE_FOOD_NAME", nullable = false)
     private String foodName;
 
-    @Column(name = "FOOD_RECIPE_TITLE")
+    @Column(name = "FOOD_RECIPE_TITLE", nullable = false)
     private String recipeTitle;
 
     @Column(name = "FOOD_RECIPE_COOKING_TIP")
