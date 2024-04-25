@@ -45,4 +45,9 @@ public class RecipeController {
         return recipeService.getRecipesSortedByTypeId(typeId);
     }
 
+    @GetMapping("/{uid}")
+    public List<Recipe> getRecipesByUserId (Long userId){
+        return recipeService.getRecipesByUserId(userId);
+    }
+
 }
