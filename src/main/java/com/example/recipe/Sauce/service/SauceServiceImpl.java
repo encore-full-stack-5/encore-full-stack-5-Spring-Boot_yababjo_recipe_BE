@@ -48,6 +48,7 @@ public class SauceServiceImpl implements SauceService{
        sauce.setSauceName(sauceRequest.sauceName());
        sauce.setSauceMeasurement(sauceRequest.sauceMeasurement());
 
+       sauceRepository.save(sauce);
 
         return byId;
     }

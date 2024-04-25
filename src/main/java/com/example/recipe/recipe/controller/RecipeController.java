@@ -1,15 +1,17 @@
 package com.example.recipe.recipe.controller;
 
+import com.example.recipe.global.domain.entity.Recipe;
+import com.example.recipe.recipe.RecipeRequestWrapper;
 
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
-import com.example.recipe.recipe.dto.recipeRequest.SauceRequest;
 import com.example.recipe.recipe.service.RecipeService;
-import com.example.recipe.tag.dto.request.TagRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,19 +22,27 @@ public class RecipeController {
 
     @PostMapping("/addrecipe")
     public void addRecipe(
-            @RequestBody RecipeAddRequest recipeAddRequest,
-            @RequestBody OrderRequest orderReq,
-            @RequestBody IngredientRequest ingredientRequest,
-            @RequestBody SauceRequest sauceRequest,
-            @RequestBody TagRequest tagRequest
+            @RequestBody RecipeAddRequest recipeAddRequest
             ){
             recipeService.addRecipe(
-                    recipeAddRequest,
-                    orderReq,
-                    ingredientRequest,
-                    sauceRequest,
-                    tagRequest
+                    recipeAddRequest
+//                    recipeRequestWrapper.getOrderRequest(),
+//                    recipeRequestWrapper.getIngredientRequests(),
+//                    recipeRequestWrapper.getSauceRequests(),
+////                  recipeRequestWrapper.getSauceRecipeBridgeRequest(),
+//                    recipeRequestWrapper.getTagRequests()
+//                    recipeRequestWrapper.getTagRecipeBridgeRequests()
             );
+    }
+
+    @GetMapping("/recently")
+    public List<Recipe> getRecipesSortedByCreateAt(){
+        return recipeService.getRecipesSortedByCreateAt();
+    }
+
+    @GetMapping("/type/{typeid}")
+    public List<Recipe> getRecipesSortedByType(@PathVariable("typeid") Long typeId){
+        return recipeService.getRecipesSortedByType(typeId);
     }
 
 

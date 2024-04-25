@@ -14,10 +14,10 @@ import java.util.List;
 public class Sauce {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SAUCE_ID", nullable = false)
+    @Column(name = "SAUCE_ID")
     private Long id;
 
-    @Column(name = "SAUCE_NAME", nullable = false)@Setter
+    @Column(name = "SAUCE_NAME")@Setter
     private String sauceName;
 
     @Column(name = "SAUCE_MEASUREMENT")@Setter

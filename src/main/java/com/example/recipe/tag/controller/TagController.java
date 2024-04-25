@@ -27,7 +27,8 @@ public class TagController {
     @PutMapping("/update/{id}")
     public Optional<Tag> updateTag(@RequestBody TagRequest tagRequest, @PathVariable("id") Long id) {
 
-        return tagService.update(tagRequest, id);
+
+        return  tagService.update(tagRequest, id);
     }
 
     @GetMapping
