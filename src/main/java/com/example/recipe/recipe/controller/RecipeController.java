@@ -8,6 +8,7 @@ import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
 import com.example.recipe.recipe.dto.recipeRequest.SauceRequest;
 import com.example.recipe.recipe.service.RecipeService;
 import com.example.recipe.tag.dto.request.TagRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class RecipeController {
     @Autowired
     private final RecipeService recipeService;
+
 
     @PostMapping("/addrecipe")
     public void addRecipe(
