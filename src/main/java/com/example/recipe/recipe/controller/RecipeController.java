@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/vi/recipe")
+@RequestMapping("/api/v1/recipe")
 public class RecipeController {
     @Autowired
     private final RecipeService recipeService;

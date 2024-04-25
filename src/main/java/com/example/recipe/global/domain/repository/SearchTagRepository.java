@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SearchTagRepository extends ElasticsearchRepository<TagDocument,Long> {
+public interface SearchTagRepository extends ElasticsearchRepository<TagDocument,String> {
     List<TagDocument> findByKeywordContaining(String keyword);
 }

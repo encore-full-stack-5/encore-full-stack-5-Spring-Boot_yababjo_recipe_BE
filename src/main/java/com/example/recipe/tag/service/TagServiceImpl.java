@@ -43,6 +43,13 @@ public class TagServiceImpl implements TagService {
         .orElseThrow(()-> new IllegalArgumentException("없는 태크"));
     }
 
+    public List<Tag> findByKeyword(String keyword) {
+        List<Tag> tags = new ArrayList<>();
+        List<Tag> byKeyword = tagRepository.findAll();
+        tags.addAll(all);
+
+        return tags;
+    }
     @Override
     public Optional<Tag> update(TagRequest tagRequest, Long id) {
 
@@ -55,6 +62,5 @@ public class TagServiceImpl implements TagService {
 
         return Optional.of(tag);
     }
-
 
 }
