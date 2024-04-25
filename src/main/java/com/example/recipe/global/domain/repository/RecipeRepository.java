@@ -18,4 +18,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     // LocalDateTime 순으로 정렬
     List<Recipe> findAllByOrderByCreateATDesc();
 
+
+
 }
