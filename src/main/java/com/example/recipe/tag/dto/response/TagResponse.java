@@ -6,18 +6,21 @@ import com.example.recipe.global.domain.entity.Tag;
 import com.example.recipe.global.domain.entity.TagRecipeBridge;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public record TagResponse(
         Long id,
         String keyword,
-        List<TagRecipeBridge> tagRecipeBridge
+        List<Long> tagRecipeBridge
 
 ){
     public static TagResponse from(Tag tag){
         return new TagResponse(
                 tag.getId(),
                 tag.getKeyword(),
-                tag.getTagRecipeBridges()
+                tag.getTagRecipeBridges().stream()
+                        .map(TagRecipeBridge::getId)
+                        .collect(Collectors.toList())
         );
 
     }
