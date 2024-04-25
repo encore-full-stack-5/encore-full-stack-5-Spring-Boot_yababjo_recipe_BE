@@ -2,9 +2,7 @@ package com.example.recipe.recipe.service;
 
 import com.example.recipe.Sauce.dto.request.SauceRequest;
 import com.example.recipe.Sauce.service.SauceServiceImpl;
-import com.example.recipe.SauceRecipeBridge.dto.request.SauceRecipeBridgeRequest;
 import com.example.recipe.SauceRecipeBridge.service.SauceRecipeBridgeServiceImpl;
-import com.example.recipe.TagRecipeBridge.dto.request.TagRecipeBridgeRequest;
 import com.example.recipe.TagRecipeBridge.service.TagRecipeBridgeServiceImpl;
 import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.global.domain.entity.Type;
@@ -83,12 +81,15 @@ public class RecipeServiceImpl implements RecipeService{
 
 
     @Override
-    public List<Recipe> getRecipesSortedByType(Long typeID) {
+    public List<Recipe> getRecipesSortedByTypeId(Long typeID) {
         long typeId = new Type().getId();
         return recipeRepository.findByTypeId(typeId);
     }
+
+
+
     @Override
-    public List<RecipeResponse> getByCookingMethodId(long cookingMethodId) {
+    public List<RecipeResponse> getByCookingMethodId(Long cookingMethodId) {
         return recipeRepository.findByCookingMethodId(cookingMethodId)
                 .stream()
                 .map(RecipeResponse::from)
