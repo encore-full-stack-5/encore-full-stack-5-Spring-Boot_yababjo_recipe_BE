@@ -46,5 +46,4 @@ public class CommentServiceImpl implements CommentService{
                 .map(CommentResponse::from)
                 .toList();
     }
-
 }
