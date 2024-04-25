@@ -5,9 +5,8 @@ import com.example.recipe.global.domain.entity.User;
 import com.example.recipe.global.domain.repository.UserRepository;
 import com.example.recipe.user.dto.request.UserSignInRequest;
 import com.example.recipe.user.dto.request.UserSignUpRequest;
-import com.example.recipe.user.dto.response.UserResponse;
+import com.example.recipe.user.dto.response.UserLoginResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     // 로그인(닉네임,패스워드)
     @Override
-    public UserResponse login(UserSignInRequest req) {
+    public UserLoginResponse login(UserSignInRequest req) {
         List<User> checkLogin = userRepository.findByNickname(req.nickName());
 
         // 회원 정보 없을 시
@@ -49,9 +48,11 @@ public class UserServiceImpl implements UserService {
         if(!user.getPassword().equals(req.password()))
             throw new IllegalArgumentException("로그인 실패");
         //토큰 주입
-        jwtTokenUtils.createToken(user);
-        return new UserResponse(user.getNickname(), user.getEMail());
+        String token = jwtTokenUtils.createToken(user);
+        return new UserLoginResponse(user.getNickname(), user.getEMail(),token);
     }
+
+
 
 
 }
