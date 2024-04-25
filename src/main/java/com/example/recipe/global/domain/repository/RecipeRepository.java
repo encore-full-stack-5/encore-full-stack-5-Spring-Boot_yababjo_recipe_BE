@@ -7,10 +7,12 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     // cooking method별 레시피 select
-    List<Recipe> findByCookingMethodId(long cookingMethodId);
+    List<Recipe> findByCookingMethodId(Long cookingMethodId);
 
     // type별 레시피 select
-    List<Recipe> findByTypeId(long typeId);
+    List<Recipe> findByTypeId(Long typeId);
+
+    List<Recipe> findByUserId(Long userId);
 
     // 평점 높은 순으로 레시피 정렬
 
