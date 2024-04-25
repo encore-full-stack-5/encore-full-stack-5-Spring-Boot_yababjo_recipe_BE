@@ -19,16 +19,23 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COMMENT_ID")
     private Long id;
-    @Column(name = "COMMENT_RATING")
-    private int rating;
+//    @Column(name = "COMMENT_RATING")
+//    private int rating;
     @Column(name = "COMMENT_CONTENT")
     private String content;
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     @Column(name = "COMMENT_CREATED_AT")
     private LocalDateTime createdAt;
+
     @JoinColumn(name="USER_ID")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
     @JoinColumn(name="FOOD_RECIPE_ID")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Recipe recipe;
 }

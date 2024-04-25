@@ -1,17 +1,26 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
 @Entity
 @Table(name="TAGS")
 public class Tag {
     @Id
-    @Column(name="TAG_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "TAG_ID")
     private Long id;
-    @Column(name="TAG_KEYWORD")
+
+    @Column(name = "TAG_KEYWORD")
+    @Setter
     private String keyword;
 
-    @JoinColumn(name="FOOD_RECIPE_ID" )
-    @OneToMany(mappedBy = "recipe")
-    private Recipe recipe;
+    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TagRecipeBridge> tagRecipeBridges;
 }

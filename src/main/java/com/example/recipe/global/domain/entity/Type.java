@@ -1,17 +1,26 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
+
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Builder
 @Table(name="TYPES")
 public class Type {
     @Id
-    @Column(name="TYPES_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="TYPE_ID")
     private Long id;
-    @Column(name="TYPES_TYPENAME")
+    @Column(name="TYPE_TYPENAME")@Setter
     private String typeName;
 
-    @JoinColumn(name="FOOD_RECIPE_ID" )
-    @OneToMany(mappedBy = "recipe")
-    private Recipe recipe;
+
+    @OneToMany(mappedBy = "type")
+    private List<Recipe> recipe;
 }

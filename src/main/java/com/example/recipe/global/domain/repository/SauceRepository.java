@@ -1,4 +1,7 @@
 package com.example.recipe.global.domain.repository;
 
-public interface SauceRepository {
+import com.example.recipe.global.domain.entity.Sauce;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SauceRepository extends JpaRepository<Sauce, Long> {
 }

@@ -6,19 +6,20 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.cglib.core.Local;
-import org.springframework.data.annotation.Id;
+
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Builder
 @Table(name = "FOOD_RECIPE")
 public class Recipe {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOOD_RECIPE_ID", nullable = false)
-    private int id;
+    private Long id;
 
     @Column(name = "FOOD_RECIPE_FOOD_NAME", nullable = false)
     private String foodName;
@@ -27,7 +28,7 @@ public class Recipe {
     private String recipeTitle;
 
     @Column(name = "FOOD_RECIPE_COOKING_TIP")
-    private int cookingTip;
+    private String cookingTip;
 
     @Column(name = "FOOD_RECIPE_SERVING_SIZE")
     private int servingSize;
@@ -59,4 +60,21 @@ public class Recipe {
     @ManyToOne
     private CookingMethod cookingMethod;
 
+    @OneToMany(mappedBy = "recipe")
+    private List<SauceRecipeBridge> sauceRecipeBridges;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<FoodIngredientsRecipeBridge> foodIngredientsRecipeBridges;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<CookingOrder> cookingOrders;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<TagRecipeBridge> tagRecipeBridges;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<Rating> ratings;
 }
