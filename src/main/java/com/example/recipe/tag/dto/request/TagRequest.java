@@ -5,7 +5,7 @@ import com.example.recipe.global.domain.entity.Tag;
 
 public record TagRequest(
         String keyword,
-    Long userId
+        Long userId
 ) {
     public Tag toEntity() {
 

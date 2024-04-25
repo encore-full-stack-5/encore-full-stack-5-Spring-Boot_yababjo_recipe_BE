@@ -39,7 +39,7 @@ public class TagServiceImpl implements TagService {
     public Tag findById(Long id) {
 
         return tagRepository.findById(id)
-        .orElseThrow(()-> new IllegalArgumentException("없는 태크"));
+                .orElseThrow(()-> new IllegalArgumentException("없는 태크"));
     }
 
     @Override
@@ -61,7 +61,7 @@ public class TagServiceImpl implements TagService {
 
         tag.setKeyword(tagRequest.keyword());
 
-       tagRepository.save(tag);
+        tagRepository.save(tag);
 
         return Optional.of(tag);
     }

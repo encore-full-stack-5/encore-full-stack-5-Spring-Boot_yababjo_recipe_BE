@@ -7,6 +7,7 @@ import com.example.recipe.user.dto.request.UserSignUpRequest;
 import com.example.recipe.user.dto.response.UserLoginResponse;
 import com.example.recipe.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/user")
 public class UserController {
 
+    @Autowired
     private final JwtTokenUtils jwtTokenUtils;
-
+    @Autowired
     private final UserService userService;
 
     @PostMapping("/signup")
