@@ -1,5 +1,6 @@
 package com.example.recipe.user.service;
 
+import com.example.recipe.global.config.JwtTokenUtils;
 import com.example.recipe.global.domain.entity.User;
 import com.example.recipe.global.domain.repository.UserRepository;
 import com.example.recipe.user.dto.request.UserSignInRequest;
@@ -15,8 +16,10 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+
     private final UserRepository userRepository;
+
+    private final JwtTokenUtils jwtTokenUtils;
 
     // 회원 가입
     @Override
@@ -45,7 +48,8 @@ public class UserServiceImpl implements UserService {
         // 비밀번호 불일치
         if(!user.getPassword().equals(req.password()))
             throw new IllegalArgumentException("로그인 실패");
-
+        //토큰 주입
+        jwtTokenUtils.createToken(user);
         return new UserResponse(user.getNickname(), user.getEMail());
     }
 

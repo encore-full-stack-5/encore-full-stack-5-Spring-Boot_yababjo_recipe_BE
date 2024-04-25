@@ -24,4 +24,5 @@ public interface RecipeService {
     List<Recipe> getRecipesSortedByCreateAt();
 
     public List<RecipeResponse> getByCookingMethodId(long cookingMethodId);
+
 }
