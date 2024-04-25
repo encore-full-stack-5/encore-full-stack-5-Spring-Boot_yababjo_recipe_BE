@@ -7,4 +7,5 @@ import com.example.recipe.user.dto.response.UserResponse;
 public interface UserService {
     UserResponse login(UserSignInRequest req); // 로그인
     void signUp(UserSignUpRequest req);
+
 }

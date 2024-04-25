@@ -30,4 +30,5 @@ public interface RecipeService {
     List<Recipe> getRecipesSortedByTypeId(Long typeId); // 종류별 정렬
 
     List<RecipeResponse> getByCookingMethodId(Long cookingMethodId);  // 방법별 정렬
+
 }
