@@ -1,8 +1,12 @@
 spring:
+  elasticsearch:
+    cluster-name: recipe-cluster
+    rest:
+      uris: http://localhost:9200
   datasource:
     url: jdbc:mysql://localhost:3306/recipe_yababjo?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
     username: root
-    password: 1516
+    password: 1234
   jpa:
     hibernate:
       ddl-auto: none
