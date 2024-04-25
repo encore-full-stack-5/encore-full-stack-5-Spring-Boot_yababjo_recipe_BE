@@ -1,13 +1,15 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 
 @Entity
 @Getter @AllArgsConstructor
-@NoArgsConstructor @Builder
+@NoArgsConstructor
 @Table(name = "COOKINGORDERS")
 public class CookingOrder {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,14 +20,8 @@ public class CookingOrder {
     @Column(name = "COOKINGORDERS_INSTRUCTION")
     private String instruction;
     @JoinColumn(name="FOOD_RECIPE_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Recipe recipe;
 
-    public void setOrder(int order){
-        this.order = order;
-    }
 
-    public void setInstruction(String instruction){
-        this.instruction = instruction;
-    }
 }

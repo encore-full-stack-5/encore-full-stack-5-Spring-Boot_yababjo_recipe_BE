@@ -1,14 +1,16 @@
 package com.example.recipe.global.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Getter @Builder
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "FOODINGREDIENTS")
-public class FoodIngredient {
+public class FoodIngredients {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOODINGREDIENTS_ID")
     private Long id;
@@ -18,21 +20,4 @@ public class FoodIngredient {
     private String type;
     @Column(name = "FOODINGREDIENTS_DES")
     private String description;
-    @Column(name = "FOODINGREDIENTS_MEASUREMENT")
-    private double ingredientsMeasurement;
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
 }
