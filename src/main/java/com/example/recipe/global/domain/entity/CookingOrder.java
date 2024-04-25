@@ -15,8 +15,10 @@ public class CookingOrder {
     private Long id;
     @Column(name = "COOKINGORDERS_ORDER")
     private int order;
+
     @Column(name = "COOKINGORDERS_INSTRUCTION")
     private String instruction;
+
     @JoinColumn(name="FOOD_RECIPE_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Recipe recipe;
