@@ -3,7 +3,6 @@ package com.example.recipe.tag.controller;
 import com.example.recipe.global.domain.entity.Tag;
 import com.example.recipe.tag.dto.request.TagRequest;
 import com.example.recipe.tag.dto.response.TagResponse;
-import com.example.recipe.tag.dto.response.TagResponseTest;
 import com.example.recipe.tag.service.TagService;
 import com.example.recipe.tagSearch.controller.TagSearchController;
 import lombok.RequiredArgsConstructor;
@@ -46,9 +45,5 @@ public class TagController {
         return tagService.findByKeyword(keywords);
     }
 
-//    @GetMapping("/search")
-//    public List<TagResponseTest> findByKeyword(@RequestParam("keyword") String keyword){
-//        List<String> keywords = tagSearchController.searchTag(keyword);
-//        return tagService.findByKeyword(keywords);
-//    }
+
 }

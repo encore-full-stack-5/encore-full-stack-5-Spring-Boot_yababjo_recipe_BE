@@ -11,7 +11,6 @@ import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.ingredient.service.IngredientServiceImpl;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
-import com.example.recipe.recipe.dto.response.RecipeIdResponse;
 import com.example.recipe.recipe.dto.response.RecipeResponse;
 import com.example.recipe.tag.dto.request.TagRequest;
 import com.example.recipe.tag.service.TagServiceImpl;
@@ -97,13 +96,6 @@ public class RecipeServiceImpl implements RecipeService{
                 .toList();
     }
 
-    @Override
-    public RecipeIdResponse getById(Long id) {
-        return RecipeIdResponse.from(recipeRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("없는 태크")));
-    }
 
-    public int getAllRecipeCount() {
-        return recipeRepository.findAll().size();
-    }
+
 }
