@@ -17,10 +17,10 @@ public class SauceController {
 
     private final SauceService sauceService;
 
-    @PostMapping
-    public void save(@RequestBody SauceRequest sauceRequest){
-        sauceService.save(sauceRequest);
-    }
+//    @PostMapping
+//    public void save(@RequestBody SauceRequest sauceRequest){
+//        sauceService.save(sauceRequest);
+//    }
 
     @GetMapping("/{id}")
     public Sauce findById(@PathVariable("id") Long id){return sauceService.findById(id); }

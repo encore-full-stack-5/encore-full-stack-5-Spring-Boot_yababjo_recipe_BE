@@ -37,18 +37,29 @@ public class RecipeController {
     }
 
     @GetMapping("/recently")
-    public List<Recipe> getRecipesSortedByCreateAt(){
+    public List<RecipeResponse> getRecipesSortedByCreateAt(){
         return recipeService.getRecipesSortedByCreateAt();
     }
 
     @GetMapping("/type/{typeid}")
-    public List<Recipe> getRecipesSortedByType(@PathVariable("typeid") Long typeId){
+    public List<RecipeResponse> getRecipesSortedByType(@PathVariable("typeid") Long typeId){
         return recipeService.getRecipesSortedByTypeId(typeId);
+    }
+
+    @GetMapping("/method/{methodid}")
+    public List<RecipeResponse> getRecipesSortedByMethod(@PathVariable("methodid") Long methodId){
+        return recipeService.getByCookingMethodId(methodId);
     }
 
     @GetMapping("/{uid}")
     public List<RecipeResponse> getRecipesByUserId (@PathVariable("uid") Long userId){
         return recipeService.getRecipesByUserId(userId);
     }
+
+    @GetMapping("/detail/{id}")
+    public Recipe getRecipesById(@PathVariable("id") Long recipeId){
+        return recipeService.getRecipeById(recipeId);
+    }
+
 
 }
