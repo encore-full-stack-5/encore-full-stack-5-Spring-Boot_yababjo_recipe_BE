@@ -1,13 +1,11 @@
 package com.example.recipe.tag.service;
 
-import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.global.domain.entity.Tag;
 import com.example.recipe.global.domain.repository.RecipeRepository;
 
 import com.example.recipe.global.domain.repository.TagRepository;
 import com.example.recipe.tag.dto.request.TagRequest;
 import com.example.recipe.tag.dto.response.TagResponse;
-import com.example.recipe.tag.dto.response.TagResponseTest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
