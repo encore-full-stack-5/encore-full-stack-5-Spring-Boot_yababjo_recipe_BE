@@ -17,16 +17,15 @@ public class TagController {
     private final TagService tagService;
 
     @PostMapping
-    public void save(@RequestBody TagRequest tagRequest){
-        tagService.save(tagRequest);
-    }
+//    public void save(@RequestBody TagRequest tagRequest){
+//        tagService.save(tagRequest);
+//    }
 
     @GetMapping("/{id}")
     public Tag findById(@PathVariable("id") Long id){return tagService.findById(id); }
 
     @PutMapping("/update/{id}")
     public Optional<Tag> updateTag(@RequestBody TagRequest tagRequest, @PathVariable("id") Long id) {
-
 
         return  tagService.update(tagRequest, id);
     }

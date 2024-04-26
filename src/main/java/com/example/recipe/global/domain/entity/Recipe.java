@@ -81,4 +81,6 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe")
     private List<Rating> ratings;
+
+
 }

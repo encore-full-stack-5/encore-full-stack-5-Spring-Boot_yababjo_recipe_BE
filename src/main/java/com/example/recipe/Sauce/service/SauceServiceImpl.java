@@ -3,6 +3,7 @@ package com.example.recipe.Sauce.service;
 import com.example.recipe.Sauce.dto.request.SauceRequest;
 import com.example.recipe.global.domain.entity.Sauce;
 import com.example.recipe.global.domain.repository.SauceRepository;
+import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,8 @@ public class SauceServiceImpl implements SauceService{
     private final SauceRepository sauceRepository;
 
     @Override
-    public void save(SauceRequest sauceRequest) {
-     Sauce sauce = sauceRepository.save(sauceRequest.toEntity());
+    public void save(RecipeAddRequest recipeAddRequest) {
+     Sauce sauce = sauceRepository.save(recipeAddRequest.sauceAdd(recipeAddRequest));
     }
 
     @Override

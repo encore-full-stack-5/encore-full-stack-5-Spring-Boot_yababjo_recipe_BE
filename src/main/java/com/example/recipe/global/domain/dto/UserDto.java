@@ -4,12 +4,10 @@ import com.example.recipe.global.domain.entity.User;
 
 public record UserDto(
         Long id,
-        String nickname,
-        String password,
-        String eMail
+        String nickname
 ) {
     public static UserDto toDto(User user) {
-        return new UserDto(user.getId(),user.getNickname(), user.getPassword(),user.getEMail());
+        return new UserDto(user.getId(),user.getNickname());
     }
 
 }

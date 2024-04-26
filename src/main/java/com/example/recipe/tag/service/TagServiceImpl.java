@@ -4,6 +4,7 @@ import com.example.recipe.global.domain.entity.Tag;
 import com.example.recipe.global.domain.repository.RecipeRepository;
 
 import com.example.recipe.global.domain.repository.TagRepository;
+import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
 import com.example.recipe.tag.dto.request.TagRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,10 @@ public class TagServiceImpl implements TagService {
 
 
     @Override
-    public void save(TagRequest tagRequest) {
-        Tag tag =  tagRepository.save(tagRequest.toEntity());
+    public void save(RecipeAddRequest recipeAddRequest) {
+        Tag tag =  tagRepository.save(recipeAddRequest.tagAdd(recipeAddRequest));
 
     }
-
     @Override
     public List<Tag> findAll() {
         List<Tag> tags = new ArrayList<>();

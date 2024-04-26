@@ -4,9 +4,7 @@ import com.example.recipe.Sauce.dto.request.SauceRequest;
 import com.example.recipe.Sauce.service.SauceServiceImpl;
 import com.example.recipe.SauceRecipeBridge.service.SauceRecipeBridgeServiceImpl;
 import com.example.recipe.TagRecipeBridge.service.TagRecipeBridgeServiceImpl;
-import com.example.recipe.global.domain.entity.Recipe;
-import com.example.recipe.global.domain.entity.Type;
-import com.example.recipe.global.domain.entity.User;
+import com.example.recipe.global.domain.entity.*;
 import com.example.recipe.global.domain.repository.*;
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.ingredient.service.IngredientServiceImpl;
@@ -29,6 +27,8 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 public class RecipeServiceImpl implements RecipeService{
 
     private final RecipeRepository recipeRepository;
+    private final TypeRepository typeRepository;
+    private final CookingMethodRepository cookingMethodRepository;
     private final TagRepository tagRepository;
 
     private final FoodIngredientsRepository foodIngredientsRepository;
@@ -57,49 +57,70 @@ public class RecipeServiceImpl implements RecipeService{
             조리 순서, 태그
          */
         recipeRepository.save(recipeAddRequest.toEntity());
+
+        Tag tag = recipeAddRequest.tagAdd(recipeAddRequest);
+        tagRepository.save(tag);
+
+        Sauce sauce = recipeAddRequest.sauceAdd(recipeAddRequest);
+        sauceRepository.save(sauce);
     }
 
+//    @Override
+//    public void addother(
+//            OrderRequest orderReqs,
+//            IngredientRequest ingredientRequests,
+//            SauceRequest sauceRequests,
+//            TagRequest tagRequests
+//            ) {
+//        cookingOrderRepository.save(orderReqs.toEntity());
+//
+//        ingredientService.save(ingredientRequests);
+//        // 재료 브릿지 서비스 필요
+//
+//        sauceService.save(sauceRequests);
+//
+//        tagService.save(tagRequests);
+////        sauceRecipeBridgeService.save(sauceRecipeBridgeRequest);
+////        tagRecipeBridgeService.save(tagRecipeBridgeRequests);
+//
+//    }
     @Override
-    public void addother(
-            OrderRequest orderReqs,
-            IngredientRequest ingredientRequests,
-            SauceRequest sauceRequests,
-            TagRequest tagRequests
-            ) {
-        cookingOrderRepository.save(orderReqs.toEntity());
-
-        ingredientService.save(ingredientRequests);
-        // 재료 브릿지 서비스 필요
-
-        sauceService.save(sauceRequests);
-
-        tagService.save(tagRequests);
-//        sauceRecipeBridgeService.save(sauceRecipeBridgeRequest);
-//        tagRecipeBridgeService.save(tagRecipeBridgeRequests);
-
+    public List<RecipeResponse> getRecipesSortedByCreateAt() {
+        return recipeRepository.findAllByOrderByCreateATDesc()
+                .stream()
+                .map(RecipeResponse::from)
+                .toList();
     }
 
 
     @Override
-    public List<Recipe> getRecipesSortedByCreateAt() {
-        return recipeRepository.findAllByOrderByCreateATDesc();
-    }
+    public List<RecipeResponse> getRecipesSortedByTypeId(Long typeID) {
+        Optional<Type> typeOptional = typeRepository.findById(typeID);
 
-
-    @Override
-    public List<Recipe> getRecipesSortedByTypeId(Long typeID) {
-        Long typeId = new Type().getId();
-        return recipeRepository.findByTypeId(typeId);
+        if (typeOptional.isPresent()) {
+            Type type = typeOptional.get();
+            return type.getRecipe().stream().map(
+                    RecipeResponse::from
+            ).toList();
+        } else {
+            return Collections.emptyList();
+        }
     }
 
 
 
     @Override
     public List<RecipeResponse> getByCookingMethodId(Long cookingMethodId) {
-        return recipeRepository.findByCookingMethodId(cookingMethodId)
-                .stream()
-                .map(RecipeResponse::from)
-                .toList();
+        Optional<CookingMethod> cookingMethodOptional = cookingMethodRepository.findById(cookingMethodId);
+
+        if (cookingMethodOptional.isPresent()) {
+            CookingMethod cookingMethod = cookingMethodOptional.get();
+            return cookingMethod.getRecipes().stream().map(
+                    RecipeResponse::from
+            ).toList();
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @Override
@@ -115,6 +136,12 @@ public class RecipeServiceImpl implements RecipeService{
         } else {
             return  Collections.emptyList();
         }
+    }
+
+    @Override
+    public Recipe getRecipeById(Long recipeId) {
+        return recipeRepository.findById(recipeId)
+                .orElseThrow(()-> new IllegalArgumentException("없는 태크"));
 
 
     }
