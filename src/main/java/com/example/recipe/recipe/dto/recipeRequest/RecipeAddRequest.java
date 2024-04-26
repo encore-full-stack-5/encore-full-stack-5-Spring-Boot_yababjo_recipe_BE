@@ -13,8 +13,8 @@ public record RecipeAddRequest(
         int servingSize,
         int level,
         double cookingTime,
-        String cookingTip
-
+        String cookingTip,
+        Long user_id
 ) {
     public Recipe toEntity(){
         return Recipe.builder()
@@ -31,6 +31,7 @@ public record RecipeAddRequest(
                 .cookingTip(cookingTip)
                 .cookingTime(cookingTime)
                 .createAT(LocalDateTime.now())
+                .user(User.builder().id(user_id).build())
                 .build();
     }
 }

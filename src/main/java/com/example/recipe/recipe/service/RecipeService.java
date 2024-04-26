@@ -7,6 +7,7 @@ import com.example.recipe.global.domain.entity.Recipe;
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
+import com.example.recipe.recipe.dto.response.RecipeIdResponse;
 import com.example.recipe.recipe.dto.response.RecipeResponse;
 import com.example.recipe.tag.dto.request.TagRequest;
 
@@ -30,5 +31,6 @@ public interface RecipeService {
     List<Recipe> getRecipesSortedByTypeId(Long typeId); // 종류별 정렬
 
     List<RecipeResponse> getByCookingMethodId(Long cookingMethodId);  // 방법별 정렬
-
+    RecipeIdResponse getById(Long id);
+    int getAllRecipeCount();
 }

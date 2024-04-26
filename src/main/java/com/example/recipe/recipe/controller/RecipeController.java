@@ -6,6 +6,8 @@ import com.example.recipe.recipe.RecipeRequestWrapper;
 import com.example.recipe.ingredient.dto.request.IngredientRequest;
 import com.example.recipe.order.dto.request.OrderRequest;
 import com.example.recipe.recipe.dto.recipeRequest.RecipeAddRequest;
+import com.example.recipe.recipe.dto.response.RecipeIdResponse;
+import com.example.recipe.recipe.dto.response.RecipeResponse;
 import com.example.recipe.recipe.service.RecipeService;
 
 
@@ -48,4 +50,13 @@ public class RecipeController {
         return recipeService.getRecipesSortedByTypeId(typeId);
     }
 
+    @GetMapping("/{id}")
+    public RecipeIdResponse getRecipe(@PathVariable("id") Long id){
+        return recipeService.getById(id);
+    }
+
+    @GetMapping("/count")
+    public int getRecipeCount(){
+        return recipeService.getAllRecipeCount();
+    }
 }
